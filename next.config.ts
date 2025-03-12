@@ -48,12 +48,16 @@ const nextConfig: NextConfig = {
   
   // Configure output and runtime settings
   output: 'standalone',
+  
+  // External packages configuration
+  serverExternalPackages: ['next'],
+  
+  // Experimental features
   experimental: {
+    // Increase server action body size limit
     serverActions: {
       bodySizeLimit: '2mb',
     },
-    // Enable proper handling of dynamic imports
-    serverComponentsExternalPackages: ['next'],
   },
   
   // Handle redirects
