@@ -46,8 +46,13 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Disable static generation for 404 page
+  // Configure output and runtime settings
   output: 'standalone',
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
+  },
   
   // Handle redirects
   async redirects() {

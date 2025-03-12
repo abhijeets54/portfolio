@@ -20,7 +20,7 @@ const Loading = () => (
   </div>
 );
 
-// Wrapper component that uses client-side hooks
+// Main content component
 const NotFoundContent = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
@@ -42,6 +42,7 @@ const NotFoundContent = () => {
   );
 };
 
+// Root component with Suspense boundary
 export default function NotFound() {
   return (
     <div className="container mx-auto py-20">
