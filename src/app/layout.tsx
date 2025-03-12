@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   description: "Elevated essentials for the discerning gentleman. Impeccably tailored garments crafted from the finest materials.",
   keywords: ["menswear", "luxury clothing", "tailored", "shirts", "pants", "accessories"],
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: '/logo.PNG',
+    apple: '/logo.PNG',
   },
 };
 
