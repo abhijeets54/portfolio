@@ -3,6 +3,7 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import dynamic from 'next/dynamic';
 
 // Simple loading component for Suspense
 const Loading = () => (
@@ -20,35 +21,17 @@ const Loading = () => (
   </div>
 );
 
-// Main content component
-const NotFoundContent = () => {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
-      <h1 className="text-9xl font-serif font-bold text-[#2c2c27]">404</h1>
-      <h2 className="text-2xl md:text-3xl font-serif mt-6 mb-8 text-[#5c5c52]">
-        Page Not Found
-      </h2>
-      <p className="max-w-md mb-10 text-[#8a8778]">
-        The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
-      </p>
-      <Link
-        href="/"
-        className="flex items-center gap-2 px-6 py-3 bg-[#2c2c27] text-white hover:bg-[#3d3d35] transition-colors"
-      >
-        <ArrowLeft size={16} />
-        Return to Homepage
-      </Link>
-    </div>
-  );
-};
+// Dynamically import the component that uses useSearchParams with no SSR
+const DynamicNotFoundContent = dynamic(() => import('./not-found-content'), { 
+  ssr: false,
+  loading: () => <Loading />
+});
 
-// Root component with Suspense boundary
+// Root component with proper handling for client-side navigation
 export default function NotFound() {
   return (
     <div className="container mx-auto py-20">
-      <Suspense fallback={<Loading />}>
-        <NotFoundContent />
-      </Suspense>
+      <DynamicNotFoundContent />
     </div>
   );
 } 

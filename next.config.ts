@@ -52,6 +52,8 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    // Enable proper handling of dynamic imports
+    serverComponentsExternalPackages: ['next'],
   },
   
   // Handle redirects
