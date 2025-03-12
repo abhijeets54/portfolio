@@ -46,6 +46,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   
+  // Disable static generation for 404 page
+  output: 'standalone',
+  
   // Handle redirects
   async redirects() {
     return [
