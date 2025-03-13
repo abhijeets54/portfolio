@@ -66,7 +66,7 @@ const Navbar = () => {
         <div className="container mx-auto px-4 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="font-serif text-2xl font-bold text-[#2c2c27] relative z-10">
-            <Image src="/logo.png" alt="Ankkor" width={160} height={50} priority className={`${isScrolled ? 'h-10' : 'h-14'} w-auto transition-all duration-300`} />
+            <Image src="/logo.PNG" alt="Ankkor" width={160} height={50} priority className={`${isScrolled ? 'h-10' : 'h-14'} w-auto transition-all duration-300`} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -189,7 +189,7 @@ const Navbar = () => {
                   <div className="p-6 border-b border-[#e5e2d9]">
                     <div className="flex items-center justify-between">
                       <span className="font-serif text-xl font-bold text-[#2c2c27]">
-                        <Image src="/logo.png" alt="Ankkor" width={120} height={40} className="h-10 w-auto" />
+                        <Image src="/logo.PNG" alt="Ankkor" width={120} height={40} className="h-10 w-auto" />
                       </span>
                       <SheetClose asChild>
                         <button className="text-[#2c2c27]" aria-label="Close menu">

@@ -222,7 +222,7 @@ const Cart = () => {
             {/* Cart Header */}
             <div className="p-6 border-b border-[#e5e2d9] flex items-center justify-between">
               <h2 className="font-serif text-xl text-[#2c2c27] flex items-center">
-                <Image src="/logo.png" alt="Ankkor" width={100} height={35} className="h-8 w-auto mr-2" />
+                <Image src="/logo.PNG" alt="Ankkor" width={100} height={35} className="h-8 w-auto mr-2" />
                 <span>Shopping Cart</span>
               </h2>
               <button 
