@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { Filter, X, ChevronDown, Search as SearchIcon } from 'lucide-react';
 import ProductCard from '@/components/product/ProductCard';
@@ -11,7 +10,23 @@ import { motion } from 'framer-motion';
 import usePageLoading from '@/hooks/usePageLoading';
 import { normalizeProductImages } from '@/lib/shopify';
 
-export default function SearchPage() {
+// Loading component for Suspense
+const SearchLoading = () => (
+  <div className="container mx-auto px-4 py-12">
+    <div className="h-8 w-48 bg-[#e5e2d9] animate-pulse mb-4"></div>
+    <div className="h-4 w-64 bg-[#e5e2d9] animate-pulse mb-8"></div>
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {[...Array(8)].map((_, i) => (
+        <div key={i} className="bg-[#f4f3f0] p-4 h-80 animate-pulse"></div>
+      ))}
+    </div>
+  </div>
+);
+
+// Separate component that uses useSearchParams
+const SearchContent = () => {
+  // Import useSearchParams inside the component
+  const { useSearchParams } = require('next/navigation');
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   
@@ -251,7 +266,7 @@ export default function SearchPage() {
           {(selectedCategories.length > 0 || selectedMaterials.length > 0) && (
             <button
               onClick={resetFilters}
-              className="w-full border border-[#2c2c27] px-4 py-2 text-sm text-[#2c2c27] hover:bg-[#f4f3f0]"
+              className="w-full border border-[#2c2c27] py-2 text-[#2c2c27] hover:bg-[#2c2c27] hover:text-white"
             >
               Reset Filters
             </button>
@@ -316,65 +331,76 @@ export default function SearchPage() {
           {(selectedCategories.length > 0 || selectedMaterials.length > 0) && (
             <button
               onClick={resetFilters}
-              className="w-full border border-[#2c2c27] px-4 py-2 text-sm text-[#2c2c27] hover:bg-[#f4f3f0]"
+              className="w-full border border-[#2c2c27] py-2 text-[#2c2c27] hover:bg-[#2c2c27] hover:text-white"
             >
               Reset Filters
             </button>
           )}
         </div>
         
-        {/* Results */}
+        {/* Search Results */}
         <div className="flex-1">
           {isLoading ? (
-            <div className="flex items-center justify-center py-24">
-              <Loader size="lg" color="#8a8778" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="bg-[#f4f3f0] p-4 h-80 animate-pulse"></div>
+              ))}
+            </div>
+          ) : filteredResults.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredResults.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  price={product.price}
+                  image={product.image}
+                  handle={product.handle}
+                  rating={product.rating}
+                  reviews={product.reviews}
+                  material={product.material}
+                  isNew={product.isNew}
+                  variantId={product.variantId}
+                />
+              ))}
             </div>
           ) : (
-            <>
-              {filteredResults.length === 0 ? (
-                <div className="py-16 text-center">
-                  <h2 className="mb-4 font-serif text-2xl font-bold text-[#2c2c27]">
+            <div className="py-12 text-center">
+              {query ? (
+                <div>
+                  <SearchIcon className="mx-auto h-12 w-12 text-[#8a8778] mb-4" />
+                  <h3 className="text-xl font-bold text-[#2c2c27] mb-2">
                     No products found
-                  </h2>
-                  <p className="mb-8 text-[#5c5c52]">
-                    Try adjusting your search or filters to find what you're looking for.
+                  </h3>
+                  <p className="text-[#5c5c52]">
+                    We couldn't find any products matching "{query}".
+                    <br />
+                    Try using different keywords or browse our collections.
                   </p>
-                  <Link
-                    href="/collection"
-                    className="inline-block border border-[#2c2c27] px-6 py-3 text-sm uppercase tracking-wider text-[#2c2c27] transition-colors hover:bg-[#f4f3f0]"
-                  >
-                    Browse Collections
-                  </Link>
                 </div>
               ) : (
-                <>
-                  <p className="mb-6 text-[#5c5c52]">
-                    {filteredResults.length} {filteredResults.length === 1 ? 'product' : 'products'} found
+                <div>
+                  <SearchIcon className="mx-auto h-12 w-12 text-[#8a8778] mb-4" />
+                  <h3 className="text-xl font-bold text-[#2c2c27] mb-2">
+                    Enter a search term
+                  </h3>
+                  <p className="text-[#5c5c52]">
+                    Type in the search box above to find products.
                   </p>
-                  
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {filteredResults.map((product) => (
-                      <ProductCard
-                        key={product.id}
-                        id={product.id}
-                        name={product.name}
-                        price={product.price}
-                        image={product.image}
-                        handle={product.handle}
-                        rating={product.rating || 4}
-                        reviews={product.reviews || Math.floor(Math.random() * 30) + 5}
-                        material={getMetafield(product, 'custom_material', undefined, product.vendor || 'Premium Fabric')}
-                        isNew={true}
-                        variantId={product.variants[0]?.id || ''}
-                      />
-                    ))}
-                  </div>
-                </>
+                </div>
               )}
-            </>
+            </div>
           )}
         </div>
       </div>
     </div>
+  );
+};
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchLoading />}>
+      <SearchContent />
+    </Suspense>
   );
 } 
