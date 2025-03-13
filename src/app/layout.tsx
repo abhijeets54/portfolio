@@ -4,6 +4,7 @@ import "./globals.css";
 import CartProvider from "@/components/cart/CartProvider";
 import LoadingProvider from "@/components/providers/LoadingProvider";
 import { CustomerProvider } from "@/components/providers/CustomerProvider";
+import { ToastProvider } from "@/components/ui/toast";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -45,17 +46,19 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${inter.variable} font-sans antialiased min-h-screen bg-[#f8f8f5]`}
       >
-        <CustomerProvider>
-          <CartProvider>
-            <LoadingProvider>
-              <Navbar />
-              <main className="pt-16">
-                {children}
-              </main>
-              <Footer />
-            </LoadingProvider>
-          </CartProvider>
-        </CustomerProvider>
+        <ToastProvider>
+          <CustomerProvider>
+            <CartProvider>
+              <LoadingProvider>
+                <Navbar />
+                <main className="pt-16">
+                  {children}
+                </main>
+                <Footer />
+              </LoadingProvider>
+            </CartProvider>
+          </CustomerProvider>
+        </ToastProvider>
       </body>
     </html>
   );

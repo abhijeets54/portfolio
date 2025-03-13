@@ -12,6 +12,7 @@ import {
   logoutCustomer, 
   registerCustomer 
 } from '@/lib/auth';
+import { useToast } from '@/components/ui/toast';
 
 // Customer context type
 interface CustomerContextType {
@@ -44,6 +45,7 @@ export function CustomerProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const { addToast } = useToast();
 
   // Check if the customer is logged in on mount
   useEffect(() => {
@@ -71,9 +73,18 @@ export function CustomerProvider({ children }: { children: React.ReactNode }) {
     try {
       const result = await loginCustomer(credentials);
       setCustomer(result.customer);
-      router.push('/account');
+      
+      // Show success toast notification
+      addToast(`Welcome back, ${result.customer?.firstName || 'there'}!`, 'success');
+      
+      // Redirect to homepage instead of account page
+      router.push('/');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred during login');
+      
+      // Show error toast notification
+      addToast(err instanceof Error ? err.message : 'An error occurred during login', 'error');
+      
       throw err;
     } finally {
       setIsLoading(false);
@@ -88,9 +99,18 @@ export function CustomerProvider({ children }: { children: React.ReactNode }) {
     try {
       const result = await registerCustomer(registration);
       setCustomer(result.customer);
-      router.push('/account');
+      
+      // Show success toast notification
+      addToast(`Welcome to Ankkor, ${result.customer?.firstName}!`, 'success');
+      
+      // Redirect to homepage instead of account page
+      router.push('/');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred during registration');
+      
+      // Show error toast notification
+      addToast(err instanceof Error ? err.message : 'An error occurred during registration', 'error');
+      
       throw err;
     } finally {
       setIsLoading(false);
@@ -101,6 +121,10 @@ export function CustomerProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     logoutCustomer();
     setCustomer(null);
+    
+    // Show info toast notification
+    addToast('You have been signed out successfully', 'info');
+    
     router.push('/');
   };
 

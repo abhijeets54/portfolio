@@ -27,9 +27,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
   // Update page title with cart count
   useEffect(() => {
     if (itemCount > 0) {
-      document.title = ` Ankkor (${itemCount}) | Timeless Menswear`;
+      document.title = `👔 Ankkor (${itemCount}) | Timeless Menswear`;
     } else {
-      document.title = ' Ankkor | Timeless Menswear';
+      document.title = `👔 Ankkor | Timeless Menswear`;
     }
   }, [itemCount]);
   
