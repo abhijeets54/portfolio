@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -48,7 +48,24 @@ const ServiceCard = ({
   );
 };
 
-export default function CustomerServicePage() {
+// Loading component for Suspense
+const CustomerServiceLoading = () => (
+  <div className="min-h-screen bg-[#f8f8f5] animate-pulse">
+    <div className="h-[300px] bg-[#e5e2d9]"></div>
+    <div className="py-20 px-4">
+      <div className="container mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="h-8 bg-[#e5e2d9] w-1/2 mx-auto mb-6"></div>
+          <div className="h-4 bg-[#e5e2d9] w-full mb-2"></div>
+          <div className="h-4 bg-[#e5e2d9] w-3/4 mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Main content component
+const CustomerServiceContent = () => {
   // Animation variants
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -136,7 +153,7 @@ export default function CustomerServicePage() {
               How Can We Help You?
             </h2>
             <p className="text-[#5c5c52] leading-relaxed">
-              At Ankkor, we're committed to providing exceptional customer service. 
+              At <Image src="/logo.png" alt="Ankkor" width={80} height={25} className="inline-block h-5 mx-1" /> we're committed to providing exceptional customer service. 
               Browse our support resources below or contact our team directly for personalized assistance.
             </p>
           </motion.div>
@@ -228,5 +245,13 @@ export default function CustomerServicePage() {
         </div>
       </section>
     </div>
+  );
+};
+
+export default function CustomerServicePage() {
+  return (
+    <Suspense fallback={<CustomerServiceLoading />}>
+      <CustomerServiceContent />
+    </Suspense>
   );
 } 

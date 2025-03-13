@@ -44,8 +44,13 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Configure output settings
+  // Configure output settings - use 'standalone' for Vercel deployment
   output: 'standalone',
+  
+  // Disable static generation for pages using useSearchParams
+  experimental: {
+    serverActions: true,
+  },
   
   // Handle redirects
   async redirects() {

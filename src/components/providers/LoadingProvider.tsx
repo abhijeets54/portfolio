@@ -1,7 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import React, { createContext, useContext, useState, useEffect, Suspense } from 'react';
+import { usePathname } from 'next/navigation';
 import PageLoading from '@/components/ui/PageLoading';
 
 interface LoadingContextType {
@@ -37,10 +37,15 @@ const pathVariantMap: Record<string, 'thread' | 'fabric' | 'button'> = {
   '/wishlist': 'thread',
 };
 
-export const LoadingProvider = ({ children }: LoadingProviderProps) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [variant, setVariant] = useState<'thread' | 'fabric' | 'button'>('thread');
+// Separate component that uses useSearchParams
+const RouteChangeHandler = ({ setIsLoading, setVariant }: { 
+  setIsLoading: (loading: boolean) => void;
+  setVariant: (variant: 'thread' | 'fabric' | 'button') => void;
+}) => {
   const pathname = usePathname();
+  
+  // Import useSearchParams inside the component that's wrapped with Suspense
+  const { useSearchParams } = require('next/navigation');
   const searchParams = useSearchParams();
 
   // Set loading state and variant when route changes
@@ -61,10 +66,23 @@ export const LoadingProvider = ({ children }: LoadingProviderProps) => {
     }, 1200);
     
     return () => clearTimeout(timer);
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams, setIsLoading, setVariant]);
+
+  return null;
+};
+
+// Loading fallback component
+const LoadingFallback = () => <div className="hidden">Loading route...</div>;
+
+export const LoadingProvider = ({ children }: LoadingProviderProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [variant, setVariant] = useState<'thread' | 'fabric' | 'button'>('thread');
 
   return (
     <LoadingContext.Provider value={{ isLoading, setLoading: setIsLoading, variant, setVariant }}>
+      <Suspense fallback={<LoadingFallback />}>
+        <RouteChangeHandler setIsLoading={setIsLoading} setVariant={setVariant} />
+      </Suspense>
       {children}
       <PageLoading isLoading={isLoading} variant={variant} />
     </LoadingContext.Provider>
