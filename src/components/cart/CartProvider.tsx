@@ -9,7 +9,20 @@ interface CartProviderProps {
 }
 
 const CartProvider = ({ children }: CartProviderProps) => {
-  const { itemCount } = useSimpleCartStore();
+  const { itemCount, initializeCart } = useSimpleCartStore();
+  
+  // Initialize cart on first load
+  useEffect(() => {
+    // Check if this is the first load of the application
+    const isFirstLoad = sessionStorage.getItem('cartInitialized') !== 'true';
+    
+    if (isFirstLoad) {
+      // Initialize the cart to ensure it starts empty
+      initializeCart();
+      // Mark that the cart has been initialized
+      sessionStorage.setItem('cartInitialized', 'true');
+    }
+  }, [initializeCart]);
   
   // Update page title with cart count
   useEffect(() => {

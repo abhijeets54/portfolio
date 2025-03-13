@@ -293,6 +293,7 @@ export const useSimpleCartStore = create<{
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  initializeCart: () => void;
 }>(
   persist(
     (set) => ({
@@ -350,6 +351,7 @@ export const useSimpleCartStore = create<{
           };
         }),
       clearCart: () => set({ items: [], itemCount: 0 }),
+      initializeCart: () => set({ items: [], itemCount: 0 }),
     }),
     {
       name: 'ankkor-simple-cart',
