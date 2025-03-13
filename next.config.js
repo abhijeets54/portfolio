@@ -1,6 +1,5 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   /* config options here */
   images: {
     domains: ['images.unsplash.com'],
@@ -29,12 +28,11 @@ const nextConfig: NextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // Removed optimizeCss experimental feature
   
   // Production optimizations
-  poweredByHeader: false, // Remove X-Powered-By header
-  compress: true, // Enable gzip compression
-  reactStrictMode: true, // Enable React strict mode for better error catching
+  poweredByHeader: false,
+  compress: true,
+  reactStrictMode: true,
   
   // Disable ESLint during build for production deployment
   eslint: {
@@ -46,19 +44,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Configure output and runtime settings
+  // Configure output settings
   output: 'standalone',
-  
-  // External packages configuration
-  serverExternalPackages: ['next'],
-  
-  // Experimental features
-  experimental: {
-    // Increase server action body size limit
-    serverActions: {
-      bodySizeLimit: '2mb',
-    },
-  },
   
   // Handle redirects
   async redirects() {
@@ -99,4 +86,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

@@ -136,7 +136,7 @@ export default function CustomerServicePage() {
               How Can We Help You?
             </h2>
             <p className="text-[#5c5c52] leading-relaxed">
-              At <Image src="/logo.png" alt="Ankkor" width={80} height={25} className="h-5 w-auto inline-block align-text-bottom mx-1" />, we're committed to providing exceptional customer service. 
+              At Ankkor, we're committed to providing exceptional customer service. 
               Browse our support resources below or contact our team directly for personalized assistance.
             </p>
           </motion.div>
