@@ -22,7 +22,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "👔 Ankkor | Timeless Menswear",
+  title: "Ankkor | Timeless Menswear",
   description: "Elevated essentials for the discerning gentleman. Impeccably tailored garments crafted from the finest materials.",
   keywords: ["menswear", "luxury clothing", "tailored", "shirts", "pants", "accessories"],
   icons: {
