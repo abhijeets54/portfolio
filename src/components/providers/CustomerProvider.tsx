@@ -51,6 +51,18 @@ export function CustomerProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const checkCustomerSession = async () => {
       try {
+        // Clear any test customer data that might be persisted
+        const isFirstLoad = sessionStorage.getItem('customerChecked') !== 'true';
+        
+        if (isFirstLoad) {
+          // Clear any existing customer session on first load
+          logoutCustomer();
+          sessionStorage.setItem('customerChecked', 'true');
+          setIsLoading(false);
+          return;
+        }
+        
+        // Only check for customer session if not first load
         if (isCustomerLoggedIn()) {
           const customerData = await getCurrentCustomer();
           setCustomer(customerData);
