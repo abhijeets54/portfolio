@@ -113,7 +113,7 @@ export default function ContactPage() {
               alt="Ankkor Store"
               width={400}
               height={300}
-              className="h-auto w-full grayscale transition-all duration-700 hover:grayscale-0"
+              className="h-auto w-full image-animate transition-all duration-700"
             />
           </div>
         </div>

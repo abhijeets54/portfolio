@@ -29,7 +29,8 @@ export default function AboutPage() {
           src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80"
           alt="Ankkor Heritage"
           fill
-          className="object-cover grayscale"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover image-animate"
         />
         <div className="absolute inset-0 bg-[#2c2c27] bg-opacity-40 flex items-center justify-center">
           <div className="text-center text-white max-w-3xl px-4">
@@ -69,7 +70,7 @@ export default function AboutPage() {
                 alt="Ankkor Craftsmanship"
                 width={600}
                 height={700}
-                className="w-full h-auto grayscale"
+                className="w-full h-auto image-animate"
               />
             </motion.div>
             
@@ -136,7 +137,7 @@ export default function AboutPage() {
                 alt="Ankkor Philosophy"
                 width={600}
                 height={700}
-                className="w-full h-auto grayscale"
+                className="w-full h-auto image-animate"
               />
             </motion.div>
           </div>
@@ -225,7 +226,7 @@ export default function AboutPage() {
                   src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80"
                   alt="Material Selection"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover image-animate"
                 />
               </div>
               <h3 className="text-xl font-serif font-bold mb-3 text-[#2c2c27]">Material Selection</h3>
@@ -243,7 +244,7 @@ export default function AboutPage() {
                   src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80"
                   alt="Pattern Making"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover image-animate"
                 />
               </div>
               <h3 className="text-xl font-serif font-bold mb-3 text-[#2c2c27]">Pattern Making</h3>
@@ -261,7 +262,7 @@ export default function AboutPage() {
                   src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80"
                   alt="Cutting and Assembly"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover image-animate"
                 />
               </div>
               <h3 className="text-xl font-serif font-bold mb-3 text-[#2c2c27]">Cutting and Assembly</h3>
@@ -279,7 +280,7 @@ export default function AboutPage() {
                   src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80"
                   alt="Finishing Touches"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover image-animate"
                 />
               </div>
               <h3 className="text-xl font-serif font-bold mb-3 text-[#2c2c27]">Finishing Touches</h3>

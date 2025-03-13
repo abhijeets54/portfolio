@@ -291,7 +291,7 @@ export default function ProductPage({ params }: { params: { handle: string } }) 
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
-                  grayscale={false}
+                  animate={false}
                   className={`h-full ${isZoomed ? 'scale-150' : ''}`}
                   style={
                     isZoomed
@@ -319,9 +319,11 @@ export default function ProductPage({ params }: { params: { handle: string } }) 
                   src={image.url}
                   alt={`${product.title} - Image ${index + 1}`}
                   fill
-                  sizes="(max-width: 1024px) 25vw, 12vw"
-                  grayscale={currentImageIndex !== index}
-                  className="h-full"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  animate={currentImageIndex !== index}
+                  className={`h-full ${
+                    currentImageIndex === index ? 'opacity-100' : 'opacity-50'
+                  } transition-opacity duration-300`}
                 />
               </button>
             ))}
@@ -493,7 +495,7 @@ export default function ProductPage({ params }: { params: { handle: string } }) 
                     alt={relatedProduct.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover h-full grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="object-cover h-full image-animate"
                   />
                 </div>
                 <h3 className="font-serif text-[#2c2c27] group-hover:text-[#8a8778] transition-colors">

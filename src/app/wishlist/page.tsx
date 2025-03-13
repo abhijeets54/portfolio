@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, X, ShoppingBag } from 'lucide-react';
+import { Heart, X, ShoppingBag, Check } from 'lucide-react';
 import { useSimpleCartStore, useWishlistStore } from '@/lib/store';
 import { useCustomer } from '@/components/providers/CustomerProvider';
 import Loader from '@/components/ui/loader';
+import { motion } from 'framer-motion';
 
 // Sample wishlist data (would normally be stored in a database or localStorage)
 const sampleWishlistItems = [
@@ -40,10 +41,11 @@ const sampleWishlistItems = [
 ];
 
 export default function WishlistPage() {
-  const { addToCart } = useSimpleCartStore();
+  const { addToCart, toggleCart } = useSimpleCartStore();
   const { items: wishlistItems, removeFromWishlist, clearWishlist } = useWishlistStore();
   const { isAuthenticated, isLoading: customerLoading } = useCustomer();
   const [isLoading, setIsLoading] = useState(true);
+  const [addedItems, setAddedItems] = useState<Record<string, boolean>>({});
   
   // Simulate loading delay
   useEffect(() => {
@@ -58,6 +60,7 @@ export default function WishlistPage() {
   
   // Add item to cart and optionally remove from wishlist
   const handleAddToCart = (item: typeof wishlistItems[0], removeAfterAdd: boolean = false) => {
+    // Map wishlist item properties to cart item properties according to useSimpleCartStore interface
     addToCart({
       id: item.id,
       name: item.name,
@@ -66,6 +69,14 @@ export default function WishlistPage() {
       variantId: item.variantId,
       quantity: 1
     });
+    
+    // Show visual feedback
+    setAddedItems(prev => ({ ...prev, [item.id]: true }));
+    
+    // Reset visual feedback after 2 seconds
+    setTimeout(() => {
+      setAddedItems(prev => ({ ...prev, [item.id]: false }));
+    }, 2000);
     
     if (removeAfterAdd) {
       removeFromWishlist(item.id);
@@ -77,6 +88,11 @@ export default function WishlistPage() {
     wishlistItems.forEach(item => {
       handleAddToCart(item);
     });
+    
+    // Open cart after adding all items
+    setTimeout(() => {
+      toggleCart();
+    }, 500);
   };
   
   return (
@@ -174,20 +190,26 @@ export default function WishlistPage() {
                           </td>
                           <td className="py-6">
                             <div className="flex items-center justify-center space-x-4">
-                              <button
+                              <motion.button
                                 onClick={() => handleAddToCart(item)}
-                                className="text-[#2c2c27] hover:text-[#8a8778] transition-colors"
+                                className={`${addedItems[item.id] ? 'bg-[#2c2c27] text-[#f4f3f0]' : 'text-[#2c2c27]'} p-2 rounded-full transition-colors hover:text-[#8a8778]`}
                                 aria-label="Add to cart"
+                                whileTap={{ scale: 0.95 }}
                               >
-                                <ShoppingBag className="h-5 w-5" />
-                              </button>
-                              <button
+                                {addedItems[item.id] ? (
+                                  <Check className="h-5 w-5" />
+                                ) : (
+                                  <ShoppingBag className="h-5 w-5" />
+                                )}
+                              </motion.button>
+                              <motion.button
                                 onClick={() => removeFromWishlist(item.id)}
-                                className="text-[#2c2c27] hover:text-[#8a8778] transition-colors"
+                                className="text-[#2c2c27] p-2 rounded-full hover:text-[#8a8778] transition-colors"
                                 aria-label="Remove from wishlist"
+                                whileTap={{ scale: 0.95 }}
                               >
                                 <X className="h-5 w-5" />
-                              </button>
+                              </motion.button>
                             </div>
                           </td>
                         </tr>

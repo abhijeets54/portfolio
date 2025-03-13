@@ -128,7 +128,7 @@ const CustomerServiceContent = () => {
           src="https://images.unsplash.com/photo-1560264280-88b68371db39?q=80"
           alt="Customer Service"
           fill
-          className="object-cover grayscale"
+          className="object-cover image-animate"
         />
         <div className="absolute inset-0 bg-[#2c2c27] bg-opacity-40 flex items-center justify-center">
           <div className="text-center text-white max-w-3xl px-4">

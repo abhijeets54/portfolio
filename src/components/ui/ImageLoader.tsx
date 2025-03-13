@@ -13,7 +13,7 @@ interface ImageLoaderProps {
   sizes?: string;
   priority?: boolean;
   className?: string;
-  grayscale?: boolean;
+  animate?: boolean;
   style?: React.CSSProperties;
 }
 
@@ -26,17 +26,23 @@ const ImageLoader = ({
   sizes = fill ? '(max-width: 768px) 100vw, 50vw' : undefined,
   priority = false,
   className = '',
-  grayscale = true,
+  animate = true,
   style = {}
 }: ImageLoaderProps) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className={`relative overflow-hidden ${className}`} style={{ 
-      minHeight: fill ? '100%' : undefined,
-      height: fill ? '100%' : undefined,
-      ...style
-    }}>
+    <div 
+      className={`relative overflow-hidden ${className}`} 
+      style={{ 
+        minHeight: fill ? '100%' : undefined,
+        height: fill ? '100%' : undefined,
+        ...style
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Loading skeleton */}
       {isLoading && (
         <motion.div
@@ -58,22 +64,27 @@ const ImageLoader = ({
       )}
 
       {/* Actual image */}
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        fill={fill}
-        sizes={sizes}
-        priority={priority}
-        className={`
-          ${isLoading ? 'opacity-0' : 'opacity-100'} 
-          transition-opacity duration-500
-          ${grayscale ? 'grayscale hover:grayscale-0 transition-all duration-700' : ''}
-          ${fill ? 'object-cover' : ''}
-        `}
-        onLoad={() => setIsLoading(false)}
-      />
+      <motion.div
+        className="w-full h-full"
+        animate={animate && isHovered ? { scale: 1.05, filter: 'brightness(1.1)' } : { scale: 1, filter: 'brightness(1)' }}
+        transition={{ duration: 0.7, ease: "easeInOut" }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          fill={fill}
+          sizes={sizes}
+          priority={priority}
+          className={`
+            ${isLoading ? 'opacity-0' : 'opacity-100'} 
+            transition-opacity duration-500
+            ${fill ? 'object-cover' : ''}
+          `}
+          onLoad={() => setIsLoading(false)}
+        />
+      </motion.div>
     </div>
   );
 };

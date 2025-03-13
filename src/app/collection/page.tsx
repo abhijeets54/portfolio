@@ -175,7 +175,8 @@ export default function CollectionPage() {
           src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80"
           alt="Ankkor Collection"
           fill
-          className="object-cover grayscale"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover image-animate"
         />
         <div className="absolute inset-0 bg-[#2c2c27] bg-opacity-30 flex items-center justify-center">
           <div className="text-center text-white">

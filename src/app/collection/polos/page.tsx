@@ -57,7 +57,7 @@ export default function PolosComingSoonPage() {
             alt="Polo Collection Preview" 
             fill
             className="object-cover"
-            grayscale={true}
+            animate={true}
           />
         </motion.div>
         

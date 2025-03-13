@@ -22,11 +22,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ankkor | Timeless Menswear",
+  title: "👔 Ankkor | Timeless Menswear",
   description: "Elevated essentials for the discerning gentleman. Impeccably tailored garments crafted from the finest materials.",
   keywords: ["menswear", "luxury clothing", "tailored", "shirts", "pants", "accessories"],
   icons: {
-    icon: '/logo.PNG',
+    icon: [
+      { url: '/logo.PNG', sizes: '32x32', type: 'image/png' },
+      { url: '/logo.PNG', sizes: '16x16', type: 'image/png' }
+    ],
+    shortcut: '/logo.PNG',
     apple: '/logo.PNG',
   },
 };

@@ -179,7 +179,7 @@ export default function Home() {
               alt="Ankkor Classic Style"
               width={600}
               height={800}
-              className="rounded-sm shadow-lg relative z-10 grayscale hover:grayscale-0 transition-all duration-700 border border-[#e5e2d9]"
+              className="rounded-sm shadow-lg relative z-10 image-animate border border-[#e5e2d9]"
             />
             <div className="absolute -bottom-6 -left-6 bg-[#2c2c27] text-[#f4f3f0] py-4 px-8 text-sm tracking-wider uppercase z-20 hidden md:block">
               Est. 2025
@@ -235,7 +235,7 @@ export default function Home() {
                 alt="Ankkor Shirts" 
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover image-animate group-hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-500 flex items-center justify-center">
                 <div className="text-center bg-[#2c2c27] bg-opacity-90 py-6 px-10 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
@@ -261,7 +261,7 @@ export default function Home() {
                 alt="Ankkor Pants" 
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover image-animate group-hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-500 flex items-center justify-center">
                 <div className="text-center bg-[#2c2c27] bg-opacity-90 py-6 px-10 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
@@ -287,7 +287,7 @@ export default function Home() {
                 alt="Ankkor Accessories" 
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover image-animate group-hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-500 flex items-center justify-center">
                 <div className="text-center bg-[#2c2c27] bg-opacity-90 py-6 px-10 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
@@ -391,7 +391,7 @@ export default function Home() {
               width={600}
               height={600}
               sizes="(max-width: 768px) 100vw, 600px"
-              className="w-full h-[600px] object-cover grayscale border border-[#e5e2d9]"
+              className="w-full h-[600px] object-cover image-animate border border-[#e5e2d9]"
             />
             <div className="absolute bottom-0 right-0 transform translate-x-8 translate-y-8 border border-[#8a8778] w-36 h-36 -z-10 hidden lg:block"></div>
           </motion.div>

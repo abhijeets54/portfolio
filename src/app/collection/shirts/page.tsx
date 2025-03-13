@@ -180,7 +180,8 @@ export default function ShirtsCollectionPage() {
           src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80"
           alt="Ankkor Shirts Collection"
           fill
-          className="object-cover grayscale"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover image-animate"
         />
         <div className="absolute inset-0 bg-[#2c2c27] bg-opacity-30 flex items-center justify-center">
           <div className="text-center text-white">

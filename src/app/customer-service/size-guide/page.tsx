@@ -72,7 +72,8 @@ const MeasurementGuide = ({
           src={image}
           alt={title}
           fill
-          className="object-cover grayscale"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover image-animate"
         />
       </div>
       <div className="md:w-2/3">

@@ -163,12 +163,12 @@
   }
 }
 
-/* Grayscale Image Hover Effect */
-.grayscale {
-  filter: grayscale(100%);
-  transition: filter 0.7s ease;
+/* Grayscale Image Hover Effect - Replaced with Subtle Animation */
+.image-animate {
+  transition: transform 0.7s ease-in-out, filter 0.7s ease-in-out;
 }
 
-.grayscale:hover {
-  filter: grayscale(0%);
+.image-animate:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
