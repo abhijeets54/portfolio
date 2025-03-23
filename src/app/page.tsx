@@ -183,7 +183,7 @@ export default function Home() {
               Hi! I'm <span className="text-gradient">Abhijeet</span>
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed max-w-lg">
-              As a <span className="highlight-box text-gradient-blue font-medium">B.Tech IT student at GNDEC, Ludhiana</span>, I craft digital experiences where creativity meets functionality. My expertise spans <span className="text-gradient-pink font-medium">website development</span> and <span className="text-gradient-amber font-medium">AI/ML innovations</span> — all powered by a strong foundation in <span className="text-gradient font-medium">data structures and algorithms</span>.
+              As a <span className="highlight-box text-gradient-blue font-medium">B.Tech student</span>, I craft digital experiences where creativity meets functionality. My expertise spans <span className="text-gradient-pink font-medium">website development</span> and <span className="text-gradient-amber font-medium">AI/ML innovations</span> — all powered by a strong foundation in <span className="text-gradient font-medium">data structures and algorithms</span>.
             </p>
             <p className="text-muted-foreground mb-8 leading-relaxed max-w-lg">
               I transform complex challenges into elegant solutions with a keen eye for detail and user experience. Whether it's building immersive interfaces or developing intelligent systems, I'm committed to excellence and continuous learning in this ever-evolving tech landscape.
