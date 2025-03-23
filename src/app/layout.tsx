@@ -22,19 +22,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Abhijeet Singh | Full Stack Developer",
+  title: "Abhijeet Singh",
   description: "Full Stack Developer specializing in React, Next.js, and modern web technologies. View my projects and get in touch.",
   keywords: ["Full Stack Developer", "Web Developer", "React", "Next.js", "Frontend Developer", "JavaScript", "TypeScript", "Node.js", "Portfolio"],
   authors: [{ name: 'Abhijeet Singh' }],
   creator: "Abhijeet Singh",
   publisher: "Abhijeet Singh",
   robots: "index, follow",
-  metadataBase: new URL("https://abhijeet-portfolio.vercel.app"),
+  metadataBase: new URL("https://abhijeets-portfolio.vercel.app"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://abhijeet-portfolio.vercel.app",
-    title: "Abhijeet Singh | Full Stack Developer",
+    url: "https://abhijeets-portfolio.vercel.app",
+    title: "Abhijeet Singh",
     description: "Full Stack Developer specializing in React, Next.js, and modern web technologies. View my projects and get in touch.",
     siteName: "Abhijeet Singh Portfolio",
     images: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abhijeet Singh | Full Stack Developer",
+    title: "Abhijeet Singh",
     description: "Full Stack Developer specializing in React, Next.js, and modern web technologies. View my projects and get in touch.",
     creator: "@abhijeets09",
     images: ["/og-image.png"],
