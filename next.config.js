@@ -16,9 +16,8 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cdn.shopify.com',
-        pathname: '/**',
-      }
+        hostname: 'drive.google.com',
+      },
     ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -33,6 +32,7 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
+  swcMinify: true,
   
   // Disable ESLint during build for production deployment
   eslint: {
@@ -83,6 +83,10 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 };
 

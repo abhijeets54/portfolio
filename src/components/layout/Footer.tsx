@@ -1,119 +1,74 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Mail, Download } from 'lucide-react';
+import { ResumeButton } from '@/components/ui/resume-button';
+import { SocialLinks } from '@/components/ui/social-links';
+import CodeSlashIcon from '@/components/ui/code-slash-icon';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2c2c27] text-[#f4f3f0]">
+    <footer className="bg-card text-foreground border-t border-border">
       {/* Main Footer Content */}
       <div className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Column 1: About */}
             <div>
-              <h4 className="font-serif text-lg mb-6">
-                <Image src="/logo.PNG" alt="Ankkor" width={160} height={50} className="h-12 w-auto invert" />
+              <h4 className="font-serif text-lg mb-6 flex items-center">
+                <CodeSlashIcon className="h-8 w-8 mr-2 text-accent" size={32} />
+                <span>Abhijeet Singh</span>
               </h4>
-              <p className="text-[#d5d0c3] text-sm leading-relaxed mb-6">
-                Timeless menswear crafted with exceptional materials and artisanal techniques, 
-                designed for the discerning gentleman who values understated luxury.
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                A professional software and AI/ML engineer specializing in modern technologies,
+                creating performant applications with elegant solutions to complex problems.
               </p>
-              <div className="flex space-x-4">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-[#8a8778] hover:text-[#f4f3f0] transition-colors">
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#8a8778] hover:text-[#f4f3f0] transition-colors">
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#8a8778] hover:text-[#f4f3f0] transition-colors">
-                  <Twitter className="h-5 w-5" />
-                </a>
-              </div>
+              <SocialLinks />
             </div>
 
-            {/* Column 2: Shop */}
+            {/* Column 2: Navigation */}
             <div>
-              <h4 className="font-serif text-lg mb-6">Shop</h4>
+              <h4 className="font-serif text-lg mb-6">Navigation</h4>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link href="/collection/shirts" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Shirts
+                  <Link href="/#about" className="text-muted-foreground hover:text-accent transition-colors">
+                    About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/collection/pants" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Pants
+                  <Link href="/#projects" className="text-muted-foreground hover:text-accent transition-colors">
+                    Projects
                   </Link>
                 </li>
                 <li>
-                  <Link href="/collection/polos" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Polos
+                  <Link href="/#skills" className="text-muted-foreground hover:text-accent transition-colors">
+                    Skills
                   </Link>
                 </li>
                 <li>
-                  <Link href="/collection" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    View All
+                  <Link href="/#extracurricular" className="text-muted-foreground hover:text-accent transition-colors">
+                    Extracurricular
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#contact" className="text-muted-foreground hover:text-accent transition-colors">
+                    Contact
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Customer Service */}
+            {/* Column 3: Get in Touch */}
             <div>
-              <h4 className="font-serif text-lg mb-6">Customer Service</h4>
+              <h4 className="font-serif text-lg mb-6">Get in Touch</h4>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link href="/customer-service/contact" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Contact Us
-                  </Link>
+                  <a href="mailto:your-email@example.com" className="text-muted-foreground hover:text-accent transition-colors flex items-center">
+                    <Mail className="h-4 w-4 mr-2" />
+                    your-email@example.com
+                  </a>
                 </li>
-                <li>
-                  <Link href="/shipping-policy" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Shipping Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/return-policy" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Return Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/customer-service/size-guide" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Size Guide
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 4: Company */}
-            <div>
-              <h4 className="font-serif text-lg mb-6">Company</h4>
-              <ul className="space-y-3 text-sm">
-                <li>
-                  <Link href="/about" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Our Heritage
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/craftsmanship" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Craftsmanship
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/sustainability" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Sustainability
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/privacy-policy" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms-of-service" className="text-[#d5d0c3] hover:text-[#f4f3f0] transition-colors">
-                    Terms of Service
-                  </Link>
+                <li className="pt-1">
+                  <ResumeButton href="/Abhijeet's Resume.pdf" text="Resume" />
                 </li>
               </ul>
             </div>
@@ -122,26 +77,23 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-[#3d3d35] py-8">
+      {/* <div className="border-t border-border py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-[#8a8778] text-xs">
-              &copy; {new Date().getFullYear()} Ankkor. All rights reserved.
+            <p className="text-muted-foreground text-xs">
+              &copy; {new Date().getFullYear()} Abhijeet's Portfolio. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy-policy" className="text-[#8a8778] text-xs hover:text-[#f4f3f0] transition-colors">
+              <a href="#" className="text-muted-foreground text-xs hover:text-accent transition-colors">
                 Privacy Policy
-              </Link>
-              <Link href="/terms-of-service" className="text-[#8a8778] text-xs hover:text-[#f4f3f0] transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/sitemap" className="text-[#8a8778] text-xs hover:text-[#f4f3f0] transition-colors">
-                Sitemap
-              </Link>
+              </a>
+              <a href="#" className="text-muted-foreground text-xs hover:text-accent transition-colors">
+                Terms of Use
+              </a>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };

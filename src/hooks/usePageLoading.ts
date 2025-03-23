@@ -10,7 +10,7 @@ import { useLoading } from '@/components/providers/LoadingProvider';
  */
 export function usePageLoading(
   isLoading: boolean, 
-  variant?: 'thread' | 'fabric' | 'button'
+  variant?: 'circuit' | 'code' | 'binary'
 ) {
   const { setLoading, setVariant } = useLoading();
 

@@ -1,83 +1,87 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import Loader from '@/components/ui/loader';
+import { z } from 'zod';
+import { motion } from 'framer-motion';
+import { SendIcon, CheckCircle, AlertCircle } from 'lucide-react';
 
-// Define the form data type
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+const formSchema = z.object({
+  from_name: z
+    .string()
+    .min(2, { message: 'Name must be at least 2 characters' })
+    .max(50, { message: 'Name must be less than 50 characters' }),
+  from_email: z
+    .string()
+    .email({ message: 'Please enter a valid email address' }),
+  subject: z
+    .string()
+    .min(2, { message: 'Subject must be at least 2 characters' })
+    .max(100, { message: 'Subject must be less than 100 characters' }),
+  message: z
+    .string()
+    .min(10, { message: 'Message must be at least 10 characters' })
+    .max(1000, { message: 'Message must be less than 1000 characters' }),
+});
 
-// Define the form errors type
-interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
-
-// EmailJS configuration
-const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_id';
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_id';
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'public_key';
+type FormData = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
+  const [formState, setFormState] = useState<FormData>({
+    from_name: '',
+    from_email: '',
     subject: '',
     message: '',
   });
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  
+  // Initialize EmailJS
+  useEffect(() => {
+    // Check if the public key is available
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init({
+        publicKey: publicKey,
+      });
+    }
+  }, []);
 
-  // Handle input changes
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormState((prev) => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    // Clear field-specific error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
     }
   };
-
-  // Validate form
+  
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+    try {
+      formSchema.parse(formState);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            newErrors[err.path[0] as string] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+      return false;
     }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-    
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
-
-  // Handle form submission
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -86,154 +90,148 @@ const ContactForm = () => {
     }
     
     setIsSubmitting(true);
-    setSubmitStatus('idle');
     
     try {
-      // Send email using EmailJS
-      await emailjs.sendForm(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        formRef.current!,
-        PUBLIC_KEY
+      // Add timestamp to the form
+      const formElement = formRef.current!;
+      const timestampInput = document.createElement('input');
+      timestampInput.type = 'hidden';
+      timestampInput.name = 'time';
+      timestampInput.value = new Date().toLocaleString();
+      formElement.appendChild(timestampInput);
+      
+      // Use environment variables for EmailJS configuration
+      const result = await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        formElement
       );
       
-      // Reset form on success
-      setFormData({
-        name: '',
-        email: '',
+      // Remove the timestamp input to prevent duplicates on future submissions
+      formElement.removeChild(timestampInput);
+      
+      console.log('Email sent successfully:', result.text);
+      setSubmitStatus('success');
+      setFormState({
+        from_name: '',
+        from_email: '',
         subject: '',
         message: '',
       });
       
-      setSubmitStatus('success');
+      // Reset form status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Email sending failed:', error);
       setSubmitStatus('error');
+      
+      // Reset form status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
     } finally {
       setIsSubmitting(false);
     }
   };
-
+  
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      {submitStatus === 'success' ? (
-        <div className="bg-[#f4f3f0] p-8 rounded-lg text-center">
-          <CheckCircle className="w-16 h-16 text-[#2c2c27] mx-auto mb-4" />
-          <h3 className="font-serif text-2xl font-bold text-[#2c2c27] mb-2">Message Sent</h3>
-          <p className="text-[#5c5c52] mb-6">
-            Thank you for contacting us. We have received your message and will respond shortly.
-          </p>
-          <button
-            onClick={() => setSubmitStatus('idle')}
-            className="bg-[#2c2c27] text-[#f4f3f0] px-6 py-3 text-sm uppercase tracking-wider hover:bg-[#3d3d35] transition-colors"
-          >
-            Send Another Message
+    <motion.div 
+      className="contact-form-box"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+    >
+      <h3 className="font-serif text-2xl mb-6">Get In Touch</h3>
+      
+      {submitStatus === 'success' && (
+        <div className="form-success mb-6 flex items-center p-4 border border-green-500/20 bg-green-50 dark:bg-green-900/10 text-green-600 dark:text-green-400 rounded-md">
+          <CheckCircle className="h-5 w-5 mr-2 flex-shrink-0" />
+          <span>Your message has been sent successfully! I'll get back to you soon.</span>
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className="form-error-message mb-6 flex items-center p-4 border border-red-500/20 bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-400 rounded-md">
+          <AlertCircle className="h-5 w-5 mr-2 flex-shrink-0" />
+          <span>There was an error sending your message. Please try again later or contact me directly via email.</span>
+        </div>
+      )}
+      
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <div className="user-box">
+          <input
+            type="text"
+            id="from_name"
+            name="from_name"
+            value={formState.from_name}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="from_name">Name</label>
+          {errors.from_name && (
+            <p className="form-error">{errors.from_name}</p>
+          )}
+        </div>
+        
+        <div className="user-box">
+          <input
+            type="email"
+            id="from_email"
+            name="from_email"
+            value={formState.from_email}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="from_email">Email</label>
+          {errors.from_email && (
+            <p className="form-error">{errors.from_email}</p>
+          )}
+        </div>
+        
+        <div className="user-box">
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={formState.subject}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="subject">Subject</label>
+          {errors.subject && (
+            <p className="form-error">{errors.subject}</p>
+          )}
+        </div>
+        
+        <div className="user-box">
+          <textarea
+            id="message"
+            name="message"
+            value={formState.message}
+            onChange={handleChange}
+            rows={5}
+            required
+          />
+          <label htmlFor="message">Message</label>
+          {errors.message && (
+            <p className="form-error">{errors.message}</p>
+          )}
+        </div>
+        
+        <div className="text-center">
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'SENDING...' : 'SEND'}
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
-      ) : (
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-          {submitStatus === 'error' && (
-            <div className="bg-red-50 border border-red-200 p-4 rounded-lg flex items-start">
-              <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
-              <div>
-                <h4 className="text-red-800 font-medium">Error</h4>
-                <p className="text-red-700 text-sm">
-                  There was a problem sending your message. Please try again later.
-                </p>
-              </div>
-            </div>
-          )}
-          
-          <div>
-            <label htmlFor="name" className="block text-[#5c5c52] mb-1">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className={`w-full border ${
-                errors.name ? 'border-red-300' : 'border-[#e5e2d9]'
-              } bg-[#f8f8f5] p-3 focus:border-[#8a8778] focus:outline-none focus:ring-1 focus:ring-[#8a8778]`}
-            />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-          </div>
-          
-          <div>
-            <label htmlFor="email" className="block text-[#5c5c52] mb-1">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={`w-full border ${
-                errors.email ? 'border-red-300' : 'border-[#e5e2d9]'
-              } bg-[#f8f8f5] p-3 focus:border-[#8a8778] focus:outline-none focus:ring-1 focus:ring-[#8a8778]`}
-            />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-          </div>
-          
-          <div>
-            <label htmlFor="subject" className="block text-[#5c5c52] mb-1">
-              Subject
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              className={`w-full border ${
-                errors.subject ? 'border-red-300' : 'border-[#e5e2d9]'
-              } bg-[#f8f8f5] p-3 focus:border-[#8a8778] focus:outline-none focus:ring-1 focus:ring-[#8a8778]`}
-            />
-            {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject}</p>}
-          </div>
-          
-          <div>
-            <label htmlFor="message" className="block text-[#5c5c52] mb-1">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={6}
-              className={`w-full border ${
-                errors.message ? 'border-red-300' : 'border-[#e5e2d9]'
-              } bg-[#f8f8f5] p-3 focus:border-[#8a8778] focus:outline-none focus:ring-1 focus:ring-[#8a8778]`}
-            />
-            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
-          </div>
-          
-          <div className="pt-2">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-[#2c2c27] text-[#f4f3f0] px-8 py-3 flex items-center justify-center text-sm uppercase tracking-wider hover:bg-[#3d3d35] transition-colors disabled:opacity-70 disabled:cursor-not-allowed w-full md:w-auto"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader size="sm" color="#f4f3f0" className="mr-2" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </>
-              )}
-            </button>
-          </div>
-        </form>
-      )}
-    </div>
+      </form>
+    </motion.div>
   );
 };
 

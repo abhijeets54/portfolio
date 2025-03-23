@@ -2,14 +2,14 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import FashionLoader from './FashionLoader';
+import TechLoader from './TechLoader';
 
 interface PageLoadingProps {
   isLoading: boolean;
-  variant?: 'thread' | 'fabric' | 'button';
+  variant?: 'circuit' | 'code' | 'binary';
 }
 
-const PageLoading = ({ isLoading, variant = 'thread' }: PageLoadingProps) => {
+const PageLoading = ({ isLoading, variant = 'circuit' }: PageLoadingProps) => {
   return (
     <AnimatePresence>
       {isLoading && (
@@ -18,9 +18,9 @@ const PageLoading = ({ isLoading, variant = 'thread' }: PageLoadingProps) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-[#f8f8f5]/90 backdrop-blur-sm"
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-background/90 backdrop-blur-sm dark:bg-background/95"
         >
-          <FashionLoader variant={variant} size="lg" />
+          <TechLoader variant={variant} size="lg" />
         </motion.div>
       )}
     </AnimatePresence>

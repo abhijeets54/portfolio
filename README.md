@@ -1,42 +1,38 @@
-# Ankkor - Luxury Menswear E-commerce
+# Abhijeet's Developer Portfolio
 
-A premium menswear e-commerce website built with Next.js, TypeScript, TailwindCSS, and Shopify integration.
+A professional software developer portfolio built with Next.js, TypeScript, TailwindCSS, and modern UI components.
 
 ## Features
 
 - **Modern Tech Stack**: Next.js 14 with App Router, React Server Components, TypeScript
 - **Responsive Design**: Mobile-first approach with full responsiveness across all devices
-- **Shopify Integration**: Complete integration with Shopify Storefront API
-- **State Management**: Zustand for client-side state management
 - **Animations**: Framer Motion for smooth animations and transitions
-- **UI Components**: Custom components with shadcn/ui
-- **Styling**: TailwindCSS for utility-first styling
+- **UI Components**: Custom components with shadcn/ui, Aceternity UI, and uiverse.io elements
+- **Styling**: TailwindCSS for utility-first styling with dark/light mode
 - **Performance**: Optimized for Core Web Vitals
 - **Accessibility**: WCAG 2.1 AA compliant
+- **Contact Form**: EmailJS integration for direct messaging
 
-## Pages
+## Sections
 
-- **Homepage**: Showcase of brand identity and featured products
-- **Collection/Category Pages**: Browse products with filtering and sorting
-- **Product Detail Page**: Detailed product information with image gallery
-- **Cart/Checkout**: Integrated with Shopify checkout
-- **About/Heritage**: Brand story and values
-- **Account Pages**: User authentication and profile management
-- **Customer Service Pages**: Contact, FAQ, shipping, returns
+- **Homepage/Hero**: Professional introduction with download resume button
+- **Projects**: Showcase of development projects with technologies and links
+- **Skills**: Technologies and programming languages proficiency
+- **Extracurricular**: Additional activities and interests
+- **Contact**: Email contact form and social links
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 18.17.0 or later
-- A Shopify store with Storefront API access
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ankkorshopify.git
-   cd ankkorshopify
+   git clone https://github.com/yourusername/portfolio.git
+   cd portfolio
    ```
 
 2. Install dependencies:
@@ -49,8 +45,15 @@ A premium menswear e-commerce website built with Next.js, TypeScript, TailwindCS
    ```
 
 3. Set up environment variables:
-   - Copy `.env.example` to `.env.local`
-   - Fill in your Shopify Storefront API credentials
+   Create a `.env.local` file in the root directory with the following variables:
+   ```
+   # EmailJS Configuration
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=contact_service
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=contact_form
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+   
+   For detailed instructions on setting up EmailJS, see [EMAILJS-SETUP.md](./EMAILJS-SETUP.md)
 
 4. Run the development server:
    ```bash
@@ -61,54 +64,32 @@ A premium menswear e-commerce website built with Next.js, TypeScript, TailwindCS
    pnpm dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-## Shopify Setup
-
-### Creating a Shopify Private App
-
-1. Log in to your Shopify admin panel
-2. Go to Apps > Develop apps
-3. Click "Create an app"
-4. Name your app (e.g., "Ankkor Headless")
-5. Set the app URL to your development or production URL
-6. Under "Storefront API", select the necessary scopes:
-   - `unauthenticated_read_product_listings`
-   - `unauthenticated_read_product_inventory`
-   - `unauthenticated_read_product_tags`
-   - `unauthenticated_read_collection_listings`
-   - `unauthenticated_write_checkouts`
-   - `unauthenticated_read_checkouts`
-   - `unauthenticated_write_customers`
-   - `unauthenticated_read_customers`
-7. Save and install the app
-8. Copy the Storefront API access token to your `.env.local` file
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Project Structure
 
 ```
-ankkorshopify/
+portfolio/
 ├── src/
 │   ├── app/                  # Next.js App Router
-│   │   ├── about/            # About/Heritage page
-│   │   ├── account/          # Account pages
-│   │   ├── collection/       # Collection pages
-│   │   ├── customer-service/ # Customer service pages
-│   │   ├── product/          # Product detail page
+│   │   ├── project/          # Project detail pages
 │   │   ├── layout.tsx        # Root layout
 │   │   └── page.tsx          # Homepage
 │   ├── components/           # React components
-│   │   ├── cart/             # Cart components
 │   │   ├── common/           # Common components
+│   │   ├── contact/          # Contact form components
 │   │   ├── layout/           # Layout components
-│   │   ├── product/          # Product components
+│   │   ├── project/          # Project components 
+│   │   ├── providers/        # Context providers
 │   │   └── ui/               # UI components
 │   ├── lib/                  # Utility functions
-│   │   ├── shopify.ts        # Shopify API integration
 │   │   └── store.ts          # Zustand store
 │   └── styles/               # Global styles
 ├── public/                   # Static assets
-├── .env.example              # Example environment variables
+│   ├── favicon/              # Favicon files
+│   ├── images/               # Image assets
+│   └── site.webmanifest      # Web app manifest
+├── .env.local                # Environment variables
 ├── .gitignore                # Git ignore file
 ├── next.config.js            # Next.js configuration
 ├── package.json              # Project dependencies
@@ -123,10 +104,9 @@ ankkorshopify/
 
 The color palette is defined in the TailwindCSS configuration and in the globals.css file. The main colors are:
 
-- Primary: `#2c2c27` (Dark charcoal)
-- Secondary: `#8a8778` (Taupe)
-- Background: `#f8f8f5` (Off-white)
-- Accent: `#5c5c52` (Olive)
+- Primary: Various gradient colors (dark theme focused)
+- Background: Dark in dark mode, light in light mode
+- Accent: Gradient effects and highlights
 
 ### Typography
 
@@ -138,7 +118,7 @@ The site uses two main fonts:
 
 The site can be deployed to Vercel with a single click:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fankkorshopify)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fportfolio)
 
 ## License
 
@@ -147,9 +127,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgements
 
 - [Next.js](https://nextjs.org/)
-- [Shopify](https://shopify.dev/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Zustand](https://github.com/pmndrs/zustand)
 - [Lucide Icons](https://lucide.dev/)
+- [EmailJS](https://www.emailjs.com/)
+- [Aceternity UI](https://ui.aceternity.com/)
+- [UIverse](https://uiverse.io/)

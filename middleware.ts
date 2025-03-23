@@ -1,5 +1,5 @@
-// This middleware is no longer needed as we're using Shopify customer accounts
-// This file is kept for reference but is not used in the application
+// Portfolio middleware for handling any route-based functionality
+// Currently unused but kept for future expansion
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';

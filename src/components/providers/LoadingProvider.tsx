@@ -7,14 +7,14 @@ import PageLoading from '@/components/ui/PageLoading';
 interface LoadingContextType {
   isLoading: boolean;
   setLoading: (loading: boolean) => void;
-  variant: 'thread' | 'fabric' | 'button';
-  setVariant: (variant: 'thread' | 'fabric' | 'button') => void;
+  variant: 'circuit' | 'code' | 'binary';
+  setVariant: (variant: 'circuit' | 'code' | 'binary') => void;
 }
 
 const LoadingContext = createContext<LoadingContextType>({
   isLoading: false,
   setLoading: () => {},
-  variant: 'thread',
+  variant: 'circuit',
   setVariant: () => {},
 });
 
@@ -25,22 +25,25 @@ interface LoadingProviderProps {
 }
 
 // Map paths to specific loader variants for a more tailored experience
-const pathVariantMap: Record<string, 'thread' | 'fabric' | 'button'> = {
-  '/collection': 'fabric',
-  '/collection/shirts': 'fabric',
-  '/collection/pants': 'fabric',
-  '/collection/polos': 'fabric',
-  '/product': 'thread',
-  '/about': 'button',
-  '/customer-service': 'button',
-  '/account': 'thread',
-  '/wishlist': 'thread',
+const pathVariantMap: Record<string, 'circuit' | 'code' | 'binary'> = {
+  '/collection': 'binary',
+  '/collection/shirts': 'binary',
+  '/collection/pants': 'binary',
+  '/collection/polos': 'binary',
+  '/product': 'circuit',
+  '/about': 'code',
+  '/customer-service': 'code',
+  '/account': 'circuit',
+  '/wishlist': 'circuit',
+  '/projects': 'binary',
+  '/project': 'circuit',
+  '/contact': 'code',
 };
 
 // Separate component that uses useSearchParams
 const RouteChangeHandler = ({ setIsLoading, setVariant }: { 
   setIsLoading: (loading: boolean) => void;
-  setVariant: (variant: 'thread' | 'fabric' | 'button') => void;
+  setVariant: (variant: 'circuit' | 'code' | 'binary') => void;
 }) => {
   const pathname = usePathname();
   
@@ -54,10 +57,10 @@ const RouteChangeHandler = ({ setIsLoading, setVariant }: {
     setIsLoading(true);
     
     // Determine the appropriate variant based on the path
-    const basePathname = '/' + pathname.split('/')[1];
-    const newVariant = pathVariantMap[basePathname] || 
-                       pathVariantMap[pathname] || 
-                       'thread';
+    const basePathname = pathname ? ('/' + pathname.split('/')[1]) : '/';
+    const newVariant = (basePathname && pathVariantMap[basePathname]) || 
+                      (pathname && pathVariantMap[pathname]) || 
+                      'circuit';
     setVariant(newVariant);
     
     // Simulate loading delay (remove in production and rely on actual loading time)
@@ -76,7 +79,7 @@ const LoadingFallback = () => <div className="hidden">Loading route...</div>;
 
 export const LoadingProvider = ({ children }: LoadingProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [variant, setVariant] = useState<'thread' | 'fabric' | 'button'>('thread');
+  const [variant, setVariant] = useState<'circuit' | 'code' | 'binary'>('circuit');
 
   return (
     <LoadingContext.Provider value={{ isLoading, setLoading: setIsLoading, variant, setVariant }}>

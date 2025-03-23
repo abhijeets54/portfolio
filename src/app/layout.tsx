@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import CartProvider from "@/components/cart/CartProvider";
-import LoadingProvider from "@/components/providers/LoadingProvider";
-import { CustomerProvider } from "@/components/providers/CustomerProvider";
-import { ToastProvider } from "@/components/ui/toast";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { LoadingProvider } from "@/components/providers/LoadingProvider";
+import { Analytics } from '@/components/layout/Analytics';
 
 // Serif font for headings
 const playfair = Playfair_Display({
@@ -23,42 +22,73 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ankkor | Timeless Menswear",
-  description: "Elevated essentials for the discerning gentleman. Impeccably tailored garments crafted from the finest materials.",
-  keywords: ["menswear", "luxury clothing", "tailored", "shirts", "pants", "accessories"],
+  title: "Abhijeet Singh | Full Stack Developer",
+  description: "Full Stack Developer specializing in React, Next.js, and modern web technologies. View my projects and get in touch.",
+  keywords: ["Full Stack Developer", "Web Developer", "React", "Next.js", "Frontend Developer", "JavaScript", "TypeScript", "Node.js", "Portfolio"],
+  authors: [{ name: 'Abhijeet Singh' }],
+  creator: "Abhijeet Singh",
+  publisher: "Abhijeet Singh",
+  robots: "index, follow",
+  metadataBase: new URL("https://abhijeet-portfolio.vercel.app"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://abhijeet-portfolio.vercel.app",
+    title: "Abhijeet Singh | Full Stack Developer",
+    description: "Full Stack Developer specializing in React, Next.js, and modern web technologies. View my projects and get in touch.",
+    siteName: "Abhijeet Singh Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Abhijeet Singh Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abhijeet Singh | Full Stack Developer",
+    description: "Full Stack Developer specializing in React, Next.js, and modern web technologies. View my projects and get in touch.",
+    creator: "@abhijeets09",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: [
-      { url: '/logo.PNG', sizes: '32x32', type: 'image/png' },
-      { url: '/logo.PNG', sizes: '16x16', type: 'image/png' }
+      { url: '/favicon/code-slash.svg' },
     ],
-    shortcut: '/logo.PNG',
-    apple: '/logo.PNG',
+    shortcut: '/favicon/code-slash.svg',
+    apple: '/favicon/code-slash.svg',
+  },
+  manifest: "/site.webmanifest",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  verification: {
+    google: "your-google-verification-code", // Add this when you have it
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${playfair.variable} ${inter.variable} font-sans antialiased min-h-screen bg-[#f8f8f5]`}
-      >
-        <ToastProvider>
-          <CustomerProvider>
-            <CartProvider>
-              <LoadingProvider>
-                <Navbar />
-                <main className="pt-16">
-                  {children}
-                </main>
-                <Footer />
-              </LoadingProvider>
-            </CartProvider>
-          </CustomerProvider>
-        </ToastProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased min-h-screen`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <LoadingProvider>
+            <Navbar />
+            <main className="pt-16">
+              {children}
+            </main>
+            <Footer />
+            <Analytics />
+          </LoadingProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
