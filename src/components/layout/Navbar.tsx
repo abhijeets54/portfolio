@@ -155,8 +155,8 @@ const Navbar = () => {
                 </button>
               </SheetTrigger>
               
-              <SheetContent side="right" className="p-0 w-full max-w-xs">
-                <div className="flex flex-col h-full">
+              <SheetContent side="right" className="p-0 w-full max-w-xs bg-background border-border">
+                <div className="flex flex-col h-full bg-background text-foreground">
                   <div className="p-6 border-b border-border">
                     <div className="flex items-center justify-between">
                       <span className="font-serif text-xl font-bold text-foreground flex items-center">
