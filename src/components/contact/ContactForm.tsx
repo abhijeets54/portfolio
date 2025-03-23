@@ -38,13 +38,15 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
-  // Initialize EmailJS with the latest API format
+  // EmailJS config
+  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ;
+  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ;
+  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ;
+  
+  // Initialize EmailJS only once
   useEffect(() => {
-    // @ts-ignore - Ignoring type error for now as the latest EmailJS API expects an object
-    emailjs.init({
-      publicKey: '2T4CCevMDdj8m2Zg'
-    });
-  }, []);
+    emailjs.init(PUBLIC_KEY);
+  }, [PUBLIC_KEY]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -98,15 +100,11 @@ const ContactForm = () => {
         time: new Date().toLocaleString()
       };
       
-      // Using the latest EmailJS API format (v4)
-      // @ts-ignore - Ignoring type error as the latest EmailJS API expects an options object
+      // Send email - don't pass public key here, it was already initialized
       const result = await emailjs.send(
-        'service_si8l07m',
-        'template_lkmzlvf',
-        templateParams,
-        {
-          publicKey: '2T4CCevMDdj8m2Zg'
-        }
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams
       );
       
       console.log('Email sent successfully:', result.text);
@@ -234,4 +232,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm; 
+export default ContactForm;
