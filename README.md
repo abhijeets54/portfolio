@@ -11,7 +11,7 @@ A professional software developer portfolio built with Next.js, TypeScript, Tail
 - **Styling**: TailwindCSS for utility-first styling with dark/light mode
 - **Performance**: Optimized for Core Web Vitals
 - **Accessibility**: WCAG 2.1 AA compliant
-- **Contact Form**: EmailJS integration for direct messaging
+- **Contact Form**: Formspree integration for direct messaging
 
 ## Sections
 
@@ -47,13 +47,11 @@ A professional software developer portfolio built with Next.js, TypeScript, Tail
 3. Set up environment variables:
    Create a `.env.local` file in the root directory with the following variables:
    ```
-   # EmailJS Configuration
-   NEXT_PUBLIC_EMAILJS_SERVICE_ID=contact_service
-   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=contact_form
-   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   # Formspree Configuration
+   NEXT_PUBLIC_FORMSPREE_ID=your_formspree_form_id
    ```
    
-   For detailed instructions on setting up EmailJS, see [EMAILJS-SETUP.md](./EMAILJS-SETUP.md)
+   For detailed instructions on setting up Formspree, see [FORMSPREE-SETUP.md](./FORMSPREE-SETUP.md)
 
 4. Run the development server:
    ```bash
@@ -132,6 +130,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Zustand](https://github.com/pmndrs/zustand)
 - [Lucide Icons](https://lucide.dev/)
-- [EmailJS](https://www.emailjs.com/)
+- [Formspree](https://formspree.io/)
 - [Aceternity UI](https://ui.aceternity.com/)
 - [UIverse](https://uiverse.io/)

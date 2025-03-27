@@ -1,17 +1,16 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
+import { useState, useRef } from 'react';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { SendIcon, CheckCircle, AlertCircle } from 'lucide-react';
 
 const formSchema = z.object({
-  from_name: z
+  name: z
     .string()
     .min(2, { message: 'Name must be at least 2 characters' })
     .max(50, { message: 'Name must be less than 50 characters' }),
-  from_email: z
+  email: z
     .string()
     .email({ message: 'Please enter a valid email address' }),
   subject: z
@@ -29,8 +28,8 @@ type FormData = z.infer<typeof formSchema>;
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [formState, setFormState] = useState<FormData>({
-    from_name: '',
-    from_email: '',
+    name: '',
+    email: '',
     subject: '',
     message: '',
   });
@@ -38,15 +37,8 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
-  // EmailJS config
-  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ;
-  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ;
-  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ;
-  
-  // Initialize EmailJS only once
-  useEffect(() => {
-    emailjs.init(PUBLIC_KEY);
-  }, [PUBLIC_KEY]);
+  // Formspree form ID - remove any URL prefix if present
+  const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID?.replace('https://formspree.io/f/', '');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -91,27 +83,24 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare form data with timestamp
-      const templateParams = {
-        from_name: formState.from_name,
-        from_email: formState.from_email,
-        subject: formState.subject,
-        message: formState.message,
-        time: new Date().toLocaleString()
-      };
-      
-      // Send email - don't pass public key here, it was already initialized
-      const result = await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        templateParams
-      );
-      
-      console.log('Email sent successfully:', result.text);
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        mode: 'cors',
+        body: JSON.stringify(formState),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setSubmitStatus('success');
       setFormState({
-        from_name: '',
-        from_email: '',
+        name: '',
+        email: '',
         subject: '',
         message: '',
       });
@@ -120,11 +109,12 @@ const ContactForm = () => {
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
+      
     } catch (error) {
-      console.error('Email sending failed:', error);
+      console.error('Error sending message:', error);
       setSubmitStatus('error');
       
-      // Reset form status after 5 seconds
+      // Reset error status after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
@@ -132,7 +122,7 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <motion.div 
       className="contact-form-box"
@@ -161,30 +151,30 @@ const ContactForm = () => {
         <div className="user-box">
           <input
             type="text"
-            id="from_name"
-            name="from_name"
-            value={formState.from_name}
+            id="name"
+            name="name"
+            value={formState.name}
             onChange={handleChange}
             required
           />
-          <label htmlFor="from_name">Name</label>
-          {errors.from_name && (
-            <p className="form-error">{errors.from_name}</p>
+          <label htmlFor="name">Name</label>
+          {errors.name && (
+            <p className="form-error">{errors.name}</p>
           )}
         </div>
         
         <div className="user-box">
           <input
             type="email"
-            id="from_email"
-            name="from_email"
-            value={formState.from_email}
+            id="email"
+            name="email"
+            value={formState.email}
             onChange={handleChange}
             required
           />
-          <label htmlFor="from_email">Email</label>
-          {errors.from_email && (
-            <p className="form-error">{errors.from_email}</p>
+          <label htmlFor="email">Email</label>
+          {errors.email && (
+            <p className="form-error">{errors.email}</p>
           )}
         </div>
         
@@ -209,7 +199,6 @@ const ContactForm = () => {
             name="message"
             value={formState.message}
             onChange={handleChange}
-            rows={5}
             required
           />
           <label htmlFor="message">Message</label>
