@@ -36,9 +36,10 @@ const ContactForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formspreeError, setFormspreeError] = useState<string | null>(null);
   
-  // Formspree form ID - remove any URL prefix if present
-  const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID?.replace('https://formspree.io/f/', '');
+  // Hardcoded Formspree form ID
+  const FORMSPREE_ID = 'mgvalwkd';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -81,6 +82,7 @@ const ContactForm = () => {
     }
     
     setIsSubmitting(true);
+    setFormspreeError(null);
     
     try {
       const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
@@ -94,7 +96,7 @@ const ContactForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        throw new Error(`Failed to send message: ${response.statusText}`);
       }
 
       setSubmitStatus('success');
@@ -113,10 +115,12 @@ const ContactForm = () => {
     } catch (error) {
       console.error('Error sending message:', error);
       setSubmitStatus('error');
+      setFormspreeError(error instanceof Error ? error.message : 'Failed to send message');
       
       // Reset error status after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
+        setFormspreeError(null);
       }, 5000);
     } finally {
       setIsSubmitting(false);
@@ -143,7 +147,7 @@ const ContactForm = () => {
       {submitStatus === 'error' && (
         <div className="form-error-message mb-6 flex items-center p-4 border border-red-500/20 bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-400 rounded-md">
           <AlertCircle className="h-5 w-5 mr-2 flex-shrink-0" />
-          <span>There was an error sending your message. Please try again later or contact me directly via email.</span>
+          <span>{formspreeError || 'There was an error sending your message. Please try again later or contact me directly via email.'}</span>
         </div>
       )}
       
