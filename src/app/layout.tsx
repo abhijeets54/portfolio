@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LoadingProvider } from "@/components/providers/LoadingProvider";
-import { Analytics } from '@/components/layout/Analytics';
+import { Analytics } from '@vercel/analytics/react';
 
 // Serif font for headings
 const playfair = Playfair_Display({
@@ -86,7 +86,17 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
-            <Analytics />
+            <Analytics 
+              mode="production"
+              debug={process.env.NODE_ENV === 'development'}
+              beforeSend={(event) => {
+                // Ignore events from localhost
+                if (event.url.includes('localhost')) {
+                  return null;
+                }
+                return event;
+              }}
+            />
           </LoadingProvider>
         </ThemeProvider>
       </body>
