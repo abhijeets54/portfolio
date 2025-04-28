@@ -69,7 +69,7 @@ const allProjects = [
     description: 'A real-world e-commerce clothing store with a seamless user experience, built with Next.js frontend and Shopify backend, featuring everything from checkout to delivery. Features include Shopify-powered backend for product & order management, optimized checkout, payment, and delivery tracking system, aesthetic, clean UI with subtle but professional animations, contact form integrated with EmailJS for customer inquiries, and fully mobile-responsive design for a smooth shopping experience.',
     image: '/ankkor.png',
     tags: ['Next.js', 'Shopify', 'Tailwind CSS', 'EmailJS'],
-    liveUrl: 'https://ankkorformals.vercel.app/',
+    liveUrl: 'https://ankkor.in/',
     featured: true,
     category: 'E-commerce',
   },

@@ -67,7 +67,7 @@ const projectsData = [
     `,
     image: '/ankkor.png',
     tags: ['Next.js', 'Shopify', 'Tailwind CSS', 'EmailJS'],
-    liveUrl: 'https://ankkorformals.vercel.app/',
+    liveUrl: 'https://ankkor.in/',
     featured: true,
     category: 'E-commerce',
     goals: [
