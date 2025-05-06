@@ -112,6 +112,16 @@ const allProjects = [
     liveUrl: 'https://abhijeets-portfolio.vercel.app',
     featured: false,
     category: 'Web App',
+  },
+  {
+    id: 'digital-evidence-viewer',
+    title: 'Digital Evidence Metadata Viewer',
+    description: 'A client-side digital forensics tool for securely analyzing files, extracting metadata, generating cryptographic hashes, and creating forensic reports - all without sending any data to a server. Features include secure client-side processing with no data uploads to servers, user authentication with Clerk, comprehensive file analysis (metadata, hashes, file signatures), case management for organizing multiple analyses, professional PDF report generation, and local browser storage using IndexedDB.',
+    image: '/df.png',
+    tags: ['Next.js', 'Clerk', 'TailwindCSS', 'Web Crypto API', 'ExifReader', 'jsPDF', 'IndexedDB'],
+    liveUrl: 'https://df-project-nine.vercel.app',
+    featured: true,
+    category: 'Digital Forensics',
   }
 ];
 

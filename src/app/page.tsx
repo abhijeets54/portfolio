@@ -113,6 +113,16 @@ const projects = [
     tags: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'EmailJS'],
     liveUrl: 'https://abhijeet-portfolio.vercel.app',
     featured: true,
+  },
+  {
+    id: 'digital-evidence-viewer',
+    title: 'Digital Evidence Metadata Viewer',
+    description: 'A client-side digital forensics tool for securely analyzing files, extracting metadata, generating cryptographic hashes, and creating forensic reports - all without sending any data to a server.',
+    image: '/df.png',
+    tags: ['Next.js', 'Clerk', 'TailwindCSS', 'Web Crypto API', 'jsPDF', 'IndexedDB'],
+    liveUrl: 'https://df-project-nine.vercel.app',
+    featured: true,
+    category: 'Digital Forensics',
   }
 ];
 

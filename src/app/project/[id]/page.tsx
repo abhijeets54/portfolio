@@ -231,6 +231,51 @@ const projectsData = [
     duration: '1 month',
   },
   {
+    id: 'digital-evidence-viewer',
+    title: 'Digital Evidence Metadata Viewer',
+    description: 'A client-side digital forensics tool for securely analyzing files, extracting metadata, and creating reports.',
+    fullDescription: `
+      A client-side digital forensics tool for securely analyzing files, extracting metadata, generating cryptographic hashes, and creating forensic reports - all without sending any data to a server.
+
+      The application performs all file analysis entirely in the browser, meaning sensitive evidence files never leave the user's device. It provides comprehensive metadata extraction for various file types, cryptographic hash generation (MD5, SHA-256), file signature verification, case management capabilities, and professional PDF report generation. All analysis results are stored securely in the browser using IndexedDB.
+      
+      This project demonstrates my ability to create secure, privacy-focused applications with advanced client-side processing capabilities for specialized domains like digital forensics.
+    `,
+    image: '/df.png',
+    tags: ['Next.js', 'Clerk', 'TailwindCSS', 'Web Crypto API', 'ExifReader', 'jsPDF', 'IndexedDB'],
+    liveUrl: 'https://df-project-nine.vercel.app',
+    featured: true,
+    category: 'Digital Forensics',
+    goals: [
+      'Create a secure digital forensics tool with complete client-side processing',
+      'Implement comprehensive file metadata extraction and analysis',
+      'Develop cryptographic hash generation and file signature verification',
+      'Build case management and organization capabilities',
+      'Create professional forensic report generation'
+    ],
+    technologies: {
+      frontend: ['Next.js 14 (App Router)', 'TypeScript', 'TailwindCSS', 'React'],
+      other: ['Web Crypto API', 'ExifReader', 'jsPDF', 'IndexedDB', 'Clerk Authentication'],
+      deployment: ['Vercel'],
+    },
+    challenges: [
+      'Processing large files entirely client-side without performance issues',
+      'Implementing complex cryptographic operations in the browser',
+      'Creating a secure storage mechanism for forensic data',
+      'Generating professional PDF reports with consistent formatting',
+      'Ensuring compliance with digital forensics best practices'
+    ],
+    results: [
+      'Secure, privacy-focused file analysis with no server uploads',
+      'Comprehensive metadata extraction for various file types',
+      'Professional PDF reports for forensic documentation',
+      'Case management system for organizing multiple analyses',
+      'Secure local storage of analysis results'
+    ],
+    date: 'February 2024',
+    duration: '2 months',
+  },
+  {
     id: 'portfolio',
     title: 'Portfolio Website – Next.js Animated Portfolio',
     description: 'A modern, fully animated portfolio built using Next.js, showcasing projects, skills, and contact info.',
