@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Instagram, Mail, Code } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Mail, Code, Code2 } from 'lucide-react';
 
 interface SocialLinkProps {
   href: string;
@@ -63,6 +63,12 @@ export function SocialLinks() {
         icon={<Mail size={20} />}
         label="Email"
         color="email"
+      />
+      <SocialLink 
+        href="https://www.geeksforgeeks.org/user/as9189lb5/"
+        icon={<Code2 size={20} />}
+        label="GeeksforGeeks"
+        color="geeksforgeeks"
       />
     </div>
   );
