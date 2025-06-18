@@ -78,6 +78,16 @@ const projects = [
     featured: true,
   },
   {
+    id: 'homely',
+    title: 'Homely – Full-Stack Food Delivery Platform',
+    description: 'A comprehensive full-stack food delivery platform enabling customers to order from local sellers, track deliveries, and analyze nutrition, with robust admin and seller dashboards.',
+    image: '/homely.png',
+    tags: ['Next.js', 'TypeScript', 'Express.js', 'MongoDB', 'Cloudinary', 'WebSockets', 'Framer Motion', 'Shadcn UI', 'Google Gemini AI'],
+    liveUrl: 'https://homely-frontend-opal.vercel.app',
+    featured: true,
+    category: 'Full Stack',
+  },
+  {
     id: 'd2-global-immigration',
     title: 'D2 Global Immigration – Visa & Immigration Consultancy',
     description: 'A professional website for an immigration consultancy, handling visa-related inquiries and services with a user-friendly interface and SEO-optimized content.',

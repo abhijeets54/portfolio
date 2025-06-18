@@ -99,6 +99,52 @@ const projectsData = [
     duration: '2 months',
   },
   {
+    id: 'homely',
+    title: 'Homely – Full-Stack Food Delivery Platform',
+    description: 'A comprehensive full-stack food delivery platform enabling customers to order from local sellers, track deliveries, and analyze nutrition.',
+    fullDescription: `
+      A comprehensive full-stack food delivery platform enabling customers to order from local sellers, track deliveries, and analyze nutrition, with robust admin and seller dashboards.
+      
+      The application features multiple user roles (customer, seller, delivery partner) with secure authentication, real-time order tracking and chat using WebSockets, and a comprehensive seller dashboard for menu, order, and payment management. It integrates Cloudinary for image uploads and optimization, and includes an advanced Nutrition Analyzer powered by Google Gemini AI that provides detailed nutritional information for dishes. The UI is interactive and animated using Framer Motion and Shadcn UI components, ensuring a mobile-responsive and accessible design. The backend provides RESTful APIs for robust operations, including payment and refund management, while an admin dashboard offers analytics and reporting.
+      
+      This project demonstrates my ability to create complex, full-stack applications with multiple user roles, real-time features, and AI integrations.
+    `,
+    image: '/homely.png',
+    tags: ['Next.js', 'TypeScript', 'Express.js', 'MongoDB', 'Cloudinary', 'WebSockets', 'Framer Motion', 'Shadcn UI', 'Google Gemini AI'],
+    liveUrl: 'https://homely-frontend-opal.vercel.app',
+    featured: true,
+    category: 'Full Stack',
+    goals: [
+      'Create a comprehensive food delivery platform with multiple user roles',
+      'Implement real-time order tracking and communication',
+      'Develop robust seller and admin dashboards',
+      'Integrate AI-powered nutrition analysis',
+      'Ensure secure payment and refund processing'
+    ],
+    technologies: {
+      frontend: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Shadcn UI'],
+      backend: ['Express.js', 'MongoDB', 'WebSockets', 'REST APIs'],
+      deployment: ['Vercel', 'Render'],
+      other: ['Cloudinary', 'Google Gemini AI', 'Payment Processing', 'Authentication'],
+    },
+    challenges: [
+      'Managing complex state across multiple user roles and permissions',
+      'Implementing real-time communication and order tracking',
+      'Creating an AI-powered nutrition analyzer with conversational capabilities',
+      'Ensuring secure image uploads and optimization',
+      'Building a comprehensive seller dashboard with analytics'
+    ],
+    results: [
+      'Multi-role platform supporting customers, sellers, and delivery partners',
+      'Real-time order tracking and communication using WebSockets',
+      'AI-powered nutrition analysis with Google Gemini integration',
+      'Comprehensive seller dashboard for menu and order management',
+      'Secure payment processing and refund management'
+    ],
+    date: 'April 2024',
+    duration: '3 months',
+  },
+  {
     id: 'd2-global-immigration',
     title: 'D2 Global Immigration – Visa & Immigration Consultancy',
     description: 'A professional website for an immigration consultancy, handling visa-related inquiries and services.',

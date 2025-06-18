@@ -74,6 +74,16 @@ const allProjects = [
     category: 'E-commerce',
   },
   {
+    id: 'homely',
+    title: 'Homely – Full-Stack Food Delivery Platform',
+    description: 'A comprehensive full-stack food delivery platform enabling customers to order from local sellers, track deliveries, and analyze nutrition, with robust admin and seller dashboards. Features include customer, seller, and delivery partner roles with secure authentication, real-time order tracking and chat using WebSockets, seller dashboard for menu, order, and payment management, Cloudinary integration for image uploads and optimization, advanced Nutrition Analyzer powered by Google Gemini AI, interactive, animated UI with Framer Motion and Shadcn UI, mobile responsive and accessible design, RESTful API for robust backend operations, payment and refund management for sellers and customers, and admin analytics and reporting dashboard.',
+    image: '/homely.png',
+    tags: ['Next.js', 'TypeScript', 'Express.js', 'MongoDB', 'Cloudinary', 'WebSockets', 'Framer Motion', 'Shadcn UI', 'Google Gemini AI'],
+    liveUrl: 'https://homely-frontend-opal.vercel.app',
+    featured: true,
+    category: 'Full Stack',
+  },
+  {
     id: 'd2-global-immigration',
     title: 'D2 Global Immigration – Visa & Immigration Consultancy',
     description: 'A professional website for an immigration consultancy, handling visa-related inquiries and services with a user-friendly interface and SEO-optimized content. Features include interactive UI with smooth animations using Framer Motion, multi-step form for visa inquiries (handling 500+ inquiries/month), SEO-optimized content boosting traffic by 50%, mobile-responsive design for better accessibility, and secure authentication & data handling.',
