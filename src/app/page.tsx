@@ -209,7 +209,11 @@ export default function Home() {
               I transform complex challenges into elegant solutions with a keen eye for detail and user experience. Whether it's building immersive interfaces or developing intelligent systems, I'm committed to excellence and continuous learning in this ever-evolving tech landscape.
             </p>
             <div className="flex flex-wrap gap-4">
-              <ResumeButton href="/Abhijeet's Resume.pdf" text="Download Resume" className="mb-4 sm:mb-0" />
+              <div className="contact-button-wrapper">
+                <a href="#contact" className="btn">
+                  CONTACT ME
+                </a>
+              </div>
             </div>
           </motion.div>
           
@@ -258,6 +262,68 @@ export default function Home() {
           <SocialLinks />
         </div>
       </div>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-24 bg-background">
+        <div className="container mx-auto px-4">
+          <FadeInWhenVisible>
+            <h2 className="text-3xl font-serif font-bold mb-16 text-foreground text-center">
+              Experience
+            </h2>
+          </FadeInWhenVisible>
+          
+          <div className="max-w-4xl mx-auto space-y-8">
+            <FadeInWhenVisible>
+              <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
+                <div className="flex flex-col md:flex-row justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-serif font-bold text-foreground">Full Stack Developer</h3>
+                    <p className="certification-issuer text-sm text-muted-foreground mt-1">Prof. Prabhat Barnwal (Michigan State University)</p>
+                    <div className="mt-4 text-foreground">
+                      <ul className="space-y-3 list-disc pl-5">
+                        <li>Led development of Peer Knowledge Exchange Platform serving Punjab government officers, improving platform speed and accessibility score <a href="https://pkep.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">pkep</a></li>
+                        <li>Launched "Sewa Assist" WhatsApp chatbot that reduced officer response time, enabling instant access to program resources</li>
+                        <li>Implemented AI-powered on-site chatbot that decreased support tickets and increased self-service resolution rate</li>
+                        <li>Architected scalable infrastructure using TypeScript/Next.js frontend and Node.js/Express backend</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end justify-between">
+                    <span className="certification-date">Apr. 2025 - Present</span>
+                    <div className="text-sm text-muted-foreground mt-2 text-right">
+                      Remote
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeInWhenVisible>
+            
+            <FadeInWhenVisible>
+              <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
+                <div className="flex flex-col md:flex-row justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-serif font-bold text-foreground">Freelance Web Developer</h3>
+                    <p className="certification-issuer text-sm text-muted-foreground mt-1">Self-Employed</p>
+                    <div className="mt-4 text-foreground">
+                      <ul className="space-y-3 list-disc pl-5">
+                        <li>Increased Ankkor e-commerce revenue by <span className="text-gradient-blue font-medium">45%</span> through Next.js/TypeScript platform with Redis-powered inventory system serving 2000+ monthly customers <a href="https://ankkorformals.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">ankkor.in</a></li>
+                        <li>Boosted D2 Global Immigration client conversion via MERN stack platform, reducing onboarding time <a href="https://www.d2global.in" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">d2global.in</a></li>
+                        <li>Scaled Initiators of Change NGO impact through a MERN stack platform managing volunteers and donations annually <a href="https://www.initiatorsofchange.com" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">initiatorsofchange.com</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end justify-between">
+                    <span className="certification-date">Jan. 2024 - Present</span>
+                    <div className="text-sm text-muted-foreground mt-2 text-right">
+                      Remote
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeInWhenVisible>
+          </div>
+        </div>
+      </section>
 
       {/* Skills Section */}
       <section id="skills" className="py-24 bg-background">
