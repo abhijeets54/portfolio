@@ -277,7 +277,7 @@ export default function Home() {
               <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
                 <div className="flex flex-col md:flex-row justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-serif font-bold text-foreground">Full Stack Developer</h3>
+                    <h3 className="text-xl font-serif font-bold text-foreground">Full Stack Developer Intern</h3>
                     <p className="certification-issuer text-sm text-muted-foreground mt-1">Prof. Prabhat Barnwal (Michigan State University)</p>
                     <div className="mt-4 text-foreground">
                       <ul className="space-y-3 list-disc pl-5">
