@@ -190,92 +190,105 @@ const projectsData = [
   },
   {
     id: 'ootd',
-    title: '#OOTD – AI-Powered Fashion Stylist',
-    description: 'A fashion AI assistant that generates personalized outfit recommendations based on user responses.',
+    title: 'OOTD – AI Fashion Stylist',
+    description: 'A comprehensive AI-powered fashion platform that analyzes outfits, generates style recommendations, and creates personalized fashion advice.',
     fullDescription: `
-      A fashion AI assistant that generates personalized outfit recommendations based on user responses, leveraging AI-generated questions for better styling accuracy.
-      
-      The application features secure user authentication with Clerk.js, AI-generated fashion questions using Llama3 based on user preferences, and AI-powered outfit suggestions considering culture, style, and trends. Users can save reports as images or PDFs, and the platform integrates with Grok for AI-powered outfit visualization.
-      
-      This project demonstrates my ability to leverage cutting-edge AI technologies to create practical applications that provide personalized experiences to users.
+      A comprehensive AI-powered fashion platform that analyzes outfits, generates style recommendations, and creates personalized fashion advice using cutting-edge technologies including Google Gemini AI, Next.js 15, and modern UI components.
+
+      The platform features advanced AI image analysis using Google Gemini Vision API for detailed outfit feedback with numerical style scores (1-10) and improvement suggestions. It includes culturally-aware fashion advice, color palette analysis, and occasion-based recommendations for work, casual, formal, and special events.
+
+      The AI image generation system integrates with multiple services (Hugging Face and Pollinations.ai) with automatic fallback systems, fashion-specific prompts optimized for outfit generation, and high-quality 512x768 resolution images. User management is powered by Clerk with secure authentication, social logins, and comprehensive profile management with style preference learning.
+
+      Advanced image management through Cloudinary provides professional-grade storage and optimization, multiple upload methods (drag & drop, click, camera), automatic format validation and compression. Interactive features include AI-generated dynamic questionnaires, 5-star rating systems, favorites management, and PDF export capabilities.
+
+      The modern UI/UX features responsive design optimized for all devices, dark/light mode with system awareness, fashion-themed loading animations, animated 3D gradient backgrounds, and Framer Motion animations for enhanced user experience.
+
+      This project demonstrates my ability to create sophisticated full-stack applications that leverage cutting-edge AI technologies to provide personalized, professional-grade user experiences while maintaining high performance and security standards.
     `,
     image: '/ootd.png',
-    tags: ['Next.js', 'Clerk.js', 'Local Llama3 AI', 'Grok'],
-    liveUrl: 'https://drive.google.com/file/d/1fyKHfkOQ0WFD82ONJZRgNJ-EFmCeRfbW/view?usp=drive_link',
+    tags: ['Next.js 15', 'Google Gemini AI', 'Clerk', 'Supabase', 'Cloudinary', 'Hugging Face', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    liveUrl: 'https://ootd.vercel.app/',
     featured: true,
     category: 'AI',
     goals: [
-      'Create an AI-powered fashion recommendation system',
-      'Implement secure user authentication',
-      'Develop AI-generated questions that adapt to user preferences',
-      'Enable report generation in multiple formats',
-      'Integrate with AI visualization tools'
+      'Create a comprehensive AI-powered fashion analysis platform',
+      'Implement advanced outfit image analysis with Google Gemini Vision API',
+      'Develop AI image generation with multiple service integrations',
+      'Build secure user authentication and profile management system',
+      'Create professional-grade image storage and optimization',
+      'Design responsive UI with modern animations and theming'
     ],
     technologies: {
-      frontend: ['Next.js', 'React', 'Tailwind CSS'],
-      backend: ['Local Llama3 AI', 'Grok API'],
-      deployment: ['Vercel'],
-      other: ['Clerk.js Authentication', 'PDF/Image Generation'],
+      frontend: ['Next.js 15', 'React 19', 'TypeScript 5.2', 'Tailwind CSS 3.3', 'Shadcn/ui', 'Framer Motion'],
+      backend: ['Google Gemini 2.5 Flash', 'Supabase PostgreSQL', 'Hugging Face API', 'Pollinations.ai'],
+      authentication: ['Clerk', 'JWT Integration', 'Social Logins'],
+      storage: ['Cloudinary', 'Supabase Storage'],
+      deployment: ['Vercel', 'Edge Network'],
+      other: ['LangChain', 'Row Level Security', 'Formspree', 'PDF Generation'],
     },
     challenges: [
-      'Training the AI to generate fashion-specific questions',
-      'Creating an outfit recommendation engine that considers multiple factors',
-      'Implementing secure authentication without reducing usability',
-      'Developing visualization capabilities for recommended outfits'
+      'Integrating Google Gemini Vision API for accurate fashion analysis',
+      'Creating fallback systems for AI image generation services',
+      'Implementing Row Level Security for multi-user data protection',
+      'Optimizing image processing and storage for performance',
+      'Designing culturally-aware AI recommendations',
+      'Building responsive UI that works across all device types'
     ],
     results: [
-      'Personalized fashion recommendations based on user preferences',
-      'Dynamic question generation that adapts to user responses',
-      'Secure user authentication with Clerk.js',
-      'Effective outfit visualization through Grok integration'
+      'Advanced AI outfit analysis with numerical style scoring',
+      'Reliable AI image generation with 99.9% uptime through fallbacks',
+      'Secure multi-user platform with comprehensive authentication',
+      'Professional image management with automatic optimization',
+      'Responsive design with excellent user experience across devices',
+      'Production-ready deployment with global edge network'
     ],
-    date: 'September 2023',
-    duration: '3 months',
+    date: 'July 2025',
+    duration: '4 months',
   },
-  {
-    id: 'globalconnect',
-    title: 'GlobalConnect – AI-Powered Bidding Platform',
-    description: 'A platform for streamlining communication and bidding for cross-border exports.',
-    fullDescription: `
-      A platform for streamlining communication and bidding for cross-border exports, improving efficiency in international trade.
-      
-      The system includes real-time chat & bidding functionality for exporters, secure authentication and user role-based access control, and AI-driven analytics for predicting competitive bids. The scalable infrastructure supports 1,000+ concurrent users, and as a hackathon finalist project, it demonstrated a 60% improvement in transaction speeds.
-      
-      This project showcases my ability to create complex real-time systems with AI integration that can handle high user loads while providing valuable business insights.
-    `,
-    image: '/gc.png',
-    tags: ['MERN Stack', 'MongoDB', 'Express.js', 'React.js', 'Node.js', 'WebSockets', 'REST APIs'],
-    liveUrl: 'https://drive.google.com/file/d/1YAFBVTdQV9nDkzl7UNoeN7qasIqdfZ7-/view',
-    featured: true,
-    category: 'AI',
-    goals: [
-      'Create a platform for cross-border export bidding',
-      'Implement real-time chat and bidding functionality',
-      'Develop AI-driven analytics for competitive bid prediction',
-      'Build a scalable infrastructure for high user loads',
-      'Improve transaction speeds in international trade'
-    ],
-    technologies: {
-      frontend: ['React.js', 'Redux', 'CSS3', 'Socket.io Client'],
-      backend: ['Node.js', 'Express.js', 'MongoDB', 'WebSockets'],
-      deployment: ['AWS'],
-      other: ['AI Analytics', 'Real-time Communication', 'Role-based Access'],
-    },
-    challenges: [
-      'Creating a scalable WebSocket architecture for real-time bidding',
-      'Implementing AI algorithms for competitive bid prediction',
-      'Ensuring secure authentication for international users',
-      'Building a system that could handle high concurrent usage'
-    ],
-    results: [
-      'Support for 1,000+ concurrent users',
-      '60% improvement in transaction speeds',
-      'Real-time communication and bidding functionality',
-      'Accurate bid predictions through AI-driven analytics'
-    ],
-    date: 'November 2023',
-    duration: '1 month',
-  },
+  // {
+  //   id: 'globalconnect',
+  //   title: 'GlobalConnect – AI-Powered Bidding Platform',
+  //   description: 'A platform for streamlining communication and bidding for cross-border exports.',
+  //   fullDescription: `
+  //     A platform for streamlining communication and bidding for cross-border exports, improving efficiency in international trade.
+  //
+  //     The system includes real-time chat & bidding functionality for exporters, secure authentication and user role-based access control, and AI-driven analytics for predicting competitive bids. The scalable infrastructure supports 1,000+ concurrent users, and as a hackathon finalist project, it demonstrated a 60% improvement in transaction speeds.
+  //
+  //     This project showcases my ability to create complex real-time systems with AI integration that can handle high user loads while providing valuable business insights.
+  //   `,
+  //   image: '/gc.png',
+  //   tags: ['MERN Stack', 'MongoDB', 'Express.js', 'React.js', 'Node.js', 'WebSockets', 'REST APIs'],
+  //   liveUrl: 'https://drive.google.com/file/d/1YAFBVTdQV9nDkzl7UNoeN7qasIqdfZ7-/view',
+  //   featured: true,
+  //   category: 'AI',
+  //   goals: [
+  //     'Create a platform for cross-border export bidding',
+  //     'Implement real-time chat and bidding functionality',
+  //     'Develop AI-driven analytics for competitive bid prediction',
+  //     'Build a scalable infrastructure for high user loads',
+  //     'Improve transaction speeds in international trade'
+  //   ],
+  //   technologies: {
+  //     frontend: ['React.js', 'Redux', 'CSS3', 'Socket.io Client'],
+  //     backend: ['Node.js', 'Express.js', 'MongoDB', 'WebSockets'],
+  //     deployment: ['AWS'],
+  //     other: ['AI Analytics', 'Real-time Communication', 'Role-based Access'],
+  //   },
+  //   challenges: [
+  //     'Creating a scalable WebSocket architecture for real-time bidding',
+  //     'Implementing AI algorithms for competitive bid prediction',
+  //     'Ensuring secure authentication for international users',
+  //     'Building a system that could handle high concurrent usage'
+  //   ],
+  //   results: [
+  //     'Support for 1,000+ concurrent users',
+  //     '60% improvement in transaction speeds',
+  //     'Real-time communication and bidding functionality',
+  //     'Accurate bid predictions through AI-driven analytics'
+  //   ],
+  //   date: 'November 2023',
+  //   duration: '1 month',
+  // },
   {
     id: 'digital-evidence-viewer',
     title: 'Digital Evidence Metadata Viewer',
