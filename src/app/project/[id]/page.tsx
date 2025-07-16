@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ExternalLink } from 'lucide-react';
 import usePageLoading from '@/hooks/usePageLoading';
 import ImageContainer from '@/components/ui/ImageContainer';
+import Breadcrumb from '@/components/ui/breadcrumb';
 
 // Extended project data with additional details
 const projectsData = [
@@ -425,8 +426,17 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
       <div className="container mx-auto px-4">
         {!isLoading && project && (
           <>
+            {/* Breadcrumb Navigation */}
+            <Breadcrumb
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Projects', href: '/projects' },
+                { label: project.title, href: `/project/${project.id}`, current: true }
+              ]}
+            />
+
             {/* Navigation */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}

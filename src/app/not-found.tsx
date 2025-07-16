@@ -4,6 +4,7 @@ import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
 // Simple loading component for Suspense
 const Loading = () => (
@@ -30,8 +31,16 @@ const DynamicNotFoundContent = dynamic(() => import('./not-found-content'), {
 // Root component with proper handling for client-side navigation
 export default function NotFound() {
   return (
-    <div className="container mx-auto py-20">
-      <DynamicNotFoundContent />
-    </div>
+    <>
+      <Head>
+        <title>Page Not Found | Abhijeet Singh - Full Stack Developer</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Explore Abhijeet Singh's portfolio of full stack development projects and get in touch." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://abhijeets-portfolio.vercel.app/404" />
+      </Head>
+      <div className="container mx-auto py-20">
+        <DynamicNotFoundContent />
+      </div>
+    </>
   );
-} 
+}

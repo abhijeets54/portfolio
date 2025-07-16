@@ -6,6 +6,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
 import ProjectCard from '@/components/project/ProjectCard';
 import usePageLoading from '@/hooks/usePageLoading';
+import Breadcrumb from '@/components/ui/breadcrumb';
 
 // Animation variants
 const fadeIn = {
@@ -157,10 +158,13 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-background pt-24 pb-16">
       <div className="container mx-auto px-4">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb />
+
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-12">
-            <Link 
+            <Link
               href="/"
               className="project-link flex items-center text-accent mb-6 text-sm hover:text-accent-foreground"
             >
