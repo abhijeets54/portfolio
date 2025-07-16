@@ -9,9 +9,9 @@ export default function GoogleAnalytics() {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -20,21 +20,10 @@ export default function GoogleAnalytics() {
             page_title: document.title,
             page_location: window.location.href,
             send_page_view: true,
-            // Enhanced ecommerce and user engagement
-            custom_map: {
-              'custom_parameter_1': 'portfolio_section'
-            },
             // Privacy settings
             anonymize_ip: true,
             allow_google_signals: false,
             allow_ad_personalization_signals: false
-          });
-          
-          // Track custom events for portfolio
-          gtag('event', 'page_view', {
-            page_title: document.title,
-            page_location: window.location.href,
-            content_group1: 'Portfolio'
           });
         `}
       </Script>

@@ -6,10 +6,9 @@ import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LoadingProvider } from "@/components/providers/LoadingProvider";
 import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import PerformanceMonitor from '@/components/analytics/PerformanceMonitor';
-import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
-import MicrosoftClarity from '@/components/analytics/MicrosoftClarity';
+import RobustAnalytics from '@/components/analytics/RobustAnalytics';
+import ConditionalSpeedInsights from '@/components/analytics/ConditionalSpeedInsights';
 
 // Serif font for headings
 const playfair = Playfair_Display({
@@ -294,8 +293,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {/* Analytics Components */}
-        <GoogleAnalytics />
-        <MicrosoftClarity />
+        <RobustAnalytics />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
@@ -306,7 +304,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <AnalyticsProvider />
-            <SpeedInsights />
+            <ConditionalSpeedInsights />
             <PerformanceMonitor />
           </LoadingProvider>
         </ThemeProvider>
