@@ -15,6 +15,12 @@ const projects = [
     priority: 0.9,
   },
   {
+    id: 'studybuddy',
+    title: 'StudyBuddy – AI-Powered Study Management',
+    lastModified: '2025-07-17',
+    priority: 0.9,
+  },
+  {
     id: 'ankkor',
     title: 'Ankkor – E-commerce Clothing Store',
     lastModified: '2025-07-05',

@@ -75,6 +75,16 @@ const allProjects = [
     category: 'Full Stack',
   },
   {
+    id: 'studybuddy',
+    title: 'StudyBuddy – AI-Powered Study Management',
+    description: 'A comprehensive AI-powered study management application that helps students organize their learning with intelligent flashcards, adaptive quizzes, smart notes, and comprehensive analytics using Google Gemini AI. Features include smart notes management with rich text editing, interactive flashcards with spaced repetition algorithms, adaptive quizzes with AI-generated questions and multiple model fallbacks, real-time analytics dashboard with study streak tracking, modern responsive design with dark/light mode toggle, RESTful API architecture with Django REST Framework, JWT authentication with automatic token refresh, and production deployment on Vercel and Render.',
+    image: '/sb.png',
+    tags: ['Django 5.0.1', 'React 18', 'Google Gemini AI', 'PostgreSQL', 'JWT', 'Tailwind CSS', 'Recharts', 'Vite'],
+    liveUrl: 'https://studybuddy-frontend-plum.vercel.app/',
+    featured: true,
+    category: 'AI',
+  },
+  {
     id: 'ankkor',
     title: 'Ankkor – E-commerce Clothing Store',
     description: 'A real-world e-commerce clothing store with a seamless user experience, built with Next.js frontend and Shopify backend, featuring everything from checkout to delivery. Features include Shopify-powered backend for product & order management, optimized checkout, payment, and delivery tracking system, aesthetic, clean UI with subtle but professional animations, contact form integrated with EmailJS for customer inquiries, and fully mobile-responsive design for a smooth shopping experience.',

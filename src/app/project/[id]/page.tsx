@@ -246,6 +246,66 @@ const projectsData = [
     date: 'July 2025',
     duration: '4 months',
   },
+  {
+    id: 'studybuddy',
+    title: 'StudyBuddy – AI-Powered Study Management',
+    description: 'A comprehensive AI-powered study management application that helps students organize their learning with intelligent flashcards, adaptive quizzes, smart notes, and comprehensive analytics.',
+    fullDescription: `
+      StudyBuddy is a comprehensive AI-powered study management application built with Django REST Framework and React that revolutionizes how students organize their learning through intelligent flashcards, adaptive quizzes, smart notes, and comprehensive analytics using Google Gemini AI.
+
+      The application features a complete user authentication system with JWT tokens, registration, login, and user profiles with statistics tracking. The notes management system includes rich text editing with React Quill, subject/topic organization with tagging, search functionality by title and content, and AI-powered categorization for better organization.
+
+      The AI quiz generation system is powered by Google Gemini 2.5 Flash with multiple model fallbacks (2.0 Flash, 1.5 Flash, Gemini Pro) for reliability. It generates high-quality multiple-choice questions from notes or topics with customizable difficulty levels (easy, medium, hard), supports 3-10 questions per quiz, and includes educational explanations for answers. The system features robust JSON parsing with markdown code block handling and comprehensive error handling.
+
+      Interactive quiz taking includes a clean interface with navigation, optional timer functionality, progress indicators, immediate scoring after submission, and detailed answer review with explanations. The flashcard system auto-generates cards from notes using AI, supports custom flashcard creation, includes spaced repetition algorithms for optimal retention, and features a mobile-friendly swipe interface.
+
+      The comprehensive analytics dashboard tracks quiz scores over time with visual charts using Recharts, provides subject-wise performance breakdowns, calculates study streaks automatically, identifies weak areas for focused study, and includes real-time statistics updates. Daily activity tracking monitors quizzes taken, study time, and performance metrics.
+
+      The modern UI features a fully responsive design optimized for mobile, tablet, and desktop, dark/light mode toggle with persistence, Tailwind CSS styling with custom components, Framer Motion animations and smooth transitions, React Hot Toast notifications, and intuitive navigation with React Router.
+
+      The technical architecture includes a RESTful API with Django REST Framework, PostgreSQL database with proper relationships and data integrity, JWT authentication with automatic token refresh, CORS handling for frontend-backend communication, comprehensive error handling and validation, and production-ready deployment configuration for Vercel (frontend) and Render (backend).
+
+      This project demonstrates advanced full-stack development skills with modern technologies, sophisticated AI integration with fallback systems, production-ready architecture with proper security measures, comprehensive testing and debugging, and professional UI/UX design principles.
+    `,
+    image: '/sb.png',
+    tags: ['Django 5.0.1', 'React 18', 'Google Gemini AI', 'PostgreSQL', 'JWT', 'Tailwind CSS', 'Recharts', 'Vite', 'Django REST Framework'],
+    liveUrl: 'https://studybuddy-frontend-plum.vercel.app/',
+    featured: true,
+    category: 'AI',
+    goals: [
+      'Create a comprehensive AI-powered study management platform for students',
+      'Implement intelligent flashcards with spaced repetition algorithms for optimal learning',
+      'Develop adaptive quiz generation using Google Gemini AI with multiple model fallbacks',
+      'Build comprehensive analytics dashboard with real-time progress tracking',
+      'Design modern responsive UI with dark/light mode and mobile optimization',
+      'Create production-ready RESTful API with robust error handling and security'
+    ],
+    technologies: {
+      frontend: ['React 18', 'Vite', 'React Router', 'Tailwind CSS', 'Framer Motion', 'React Quill', 'Recharts', 'React Hot Toast'],
+      backend: ['Django 5.0.1', 'Django REST Framework', 'PostgreSQL', 'JWT Authentication', 'WhiteNoise', 'Gunicorn'],
+      ai: ['Google Gemini 2.5 Flash', 'Gemini 2.0 Flash', 'Gemini 1.5 Flash', 'Structured Prompts', 'JSON Parsing', 'Model Fallbacks'],
+      deployment: ['Vercel (Frontend)', 'Render (Backend)', 'PostgreSQL Database', 'Environment Variables'],
+      other: ['CORS Handling', 'Spaced Repetition', 'Real-time Analytics', 'Rich Text Editing', 'Mobile Responsive'],
+    },
+    challenges: [
+      'Implementing robust AI integration with Google Gemini API and handling JSON parsing failures from markdown-wrapped responses',
+      'Creating multiple model fallback systems (Gemini 2.5 Flash → 2.0 Flash → 1.5 Flash → Pro) for 99.9% uptime reliability',
+      'Building comprehensive analytics tracking system with real-time updates for quiz attempts, study time, and streak calculations',
+      'Developing spaced repetition algorithms for flashcards to optimize learning retention and memory consolidation',
+      'Designing responsive UI that works seamlessly across mobile, tablet, and desktop with complex study interfaces',
+      'Implementing secure JWT authentication with automatic token refresh and proper CORS handling for production deployment'
+    ],
+    results: [
+      'Fully functional AI-powered study platform with 5+ working quiz generation models and robust error handling',
+      'Intelligent flashcard system with spaced repetition algorithms and mobile-friendly swipe interface',
+      'Advanced analytics dashboard with real-time tracking of study streaks, performance metrics, and subject mastery',
+      'Production-ready deployment on Vercel (frontend) and Render (backend) with PostgreSQL database',
+      'Modern responsive design with dark/light mode, smooth animations, and excellent mobile user experience',
+      'Comprehensive RESTful API with 15+ endpoints, proper validation, and production-grade security measures'
+    ],
+    date: 'July 2025',
+    duration: '2 months',
+  },
   // {
   //   id: 'globalconnect',
   //   title: 'GlobalConnect – AI-Powered Bidding Platform',
