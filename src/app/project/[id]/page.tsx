@@ -191,7 +191,7 @@ const projectsData = [
   },
   {
     id: 'ootd',
-    title: 'OOTD – AI Powered Fashion Stylist',
+    title: 'OOTD – AI-Powered Fashion Stylist',
     description: 'A comprehensive AI-powered fashion platform that analyzes outfits, generates style recommendations, and creates personalized fashion advice.',
     fullDescription: `
       A comprehensive AI-powered fashion platform that analyzes outfits, generates style recommendations, and creates personalized fashion advice using cutting-edge technologies including Google Gemini AI, Next.js 15, and modern UI components.

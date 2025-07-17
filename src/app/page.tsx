@@ -60,7 +60,7 @@ const FadeInWhenVisible = ({ children, className }: { children: React.ReactNode,
 const projects = [
   {
     id: 'ootd',
-    title: 'OOTD – AI Fashion Stylist',
+    title: 'OOTD – AI-Powered Fashion Stylist',
     description: 'A comprehensive AI-powered fashion platform that analyzes outfits, generates style recommendations, and creates personalized fashion advice using Google Gemini AI, with advanced image analysis, AI outfit generation, and professional PDF reports.',
     image: '/ootd.png',
     tags: ['Next.js 15', 'Google Gemini AI', 'Clerk', 'Supabase', 'Cloudinary', 'Hugging Face', 'TypeScript', 'Tailwind CSS'],
