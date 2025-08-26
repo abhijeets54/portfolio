@@ -287,19 +287,42 @@ export default function Home() {
               <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
                 <div className="flex flex-col md:flex-row justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-serif font-bold text-foreground">Full Stack Developer Intern</h3>
-                    <p className="certification-issuer text-sm text-muted-foreground mt-1">Prof. Prabhat Barnwal (Michigan State University)</p>
+                    <h3 className="text-xl font-serif font-bold text-foreground">Faculty Development Intern</h3>
+                    <p className="certification-issuer text-sm text-muted-foreground mt-1">Indian School of Business (ISB)</p>
                     <div className="mt-4 text-foreground">
                       <ul className="space-y-3 list-disc pl-5">
-                        <li>Led development of Peer Knowledge Exchange Platform serving Punjab government officers, improving platform speed and accessibility score <a href="https://pkep.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">pkep</a></li>
-                        <li>Launched "Sewa Assist" WhatsApp chatbot that reduced officer response time, enabling instant access to program resources</li>
-                        <li>Implemented AI-powered on-site chatbot that decreased support tickets and increased self-service resolution rate</li>
-                        <li>Architected scalable infrastructure using TypeScript/Next.js frontend and Node.js/Express backend</li>
+                        <li>Enhanced Peer Knowledge Exchange Platform with advanced features, improving user engagement</li>
+                        <li>Conducted research interviews with 25+ mid-level bureaucrats from Government of Punjab on policy implementation</li>
+                        <li>Collaborated with faculty on digital transformation research in public administration and knowledge sharing</li>
                       </ul>
                     </div>
                   </div>
                   <div className="flex flex-col items-end justify-between">
-                    <span className="certification-date">Apr. 2025 - Present</span>
+                    <span className="certification-date">Aug. 2025 – Present</span>
+                    <div className="text-sm text-muted-foreground mt-2 text-right">
+                      Mohali, Punjab
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeInWhenVisible>
+            
+            <FadeInWhenVisible>
+              <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
+                <div className="flex flex-col md:flex-row justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-serif font-bold text-foreground">Full Stack Developer Intern</h3>
+                    <p className="certification-issuer text-sm text-muted-foreground mt-1">Prof. Prabhat Barnwal (Michigan State University)</p>
+                    <div className="mt-4 text-foreground">
+                      <ul className="space-y-3 list-disc pl-5">
+                        <li>Led development of Peer Knowledge Exchange Platform serving Punjab government officers <a href="https://pkep.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">pkep</a></li>
+                        <li>Launched "Sewa Assist" WhatsApp chatbot, enabling instant access to resources</li>
+                        <li>Implemented on-site chatbot that decreased support tickets and increased self-service resolution rate</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end justify-between">
+                    <span className="certification-date">Apr. 2025 – July 2025</span>
                     <div className="text-sm text-muted-foreground mt-2 text-right">
                       Remote
                     </div>
@@ -316,14 +339,14 @@ export default function Home() {
                     <p className="certification-issuer text-sm text-muted-foreground mt-1">Self-Employed</p>
                     <div className="mt-4 text-foreground">
                       <ul className="space-y-3 list-disc pl-5">
-                        <li>Increased Ankkor e-commerce revenue by <span className="text-gradient-blue font-medium">45%</span> through Next.js/TypeScript platform with Redis-powered inventory system serving 2000+ monthly customers <a href="https://ankkorformals.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">ankkor.in</a></li>
-                        <li>Boosted D2 Global Immigration client conversion via MERN stack platform, reducing onboarding time <a href="https://www.d2global.in" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">d2global.in</a></li>
-                        <li>Scaled Initiators of Change NGO impact through a MERN stack platform managing volunteers and donations annually <a href="https://www.initiatorsofchange.com" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">initiatorsofchange.com</a></li>
+                        <li>Increased Ankkor e-commerce revenue by 45% through Next.js/TypeScript platform <a href="https://ankkor.in" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">ankkor.in</a></li>
+                        <li>Boosted D2 Global Immigration client conversion via MERN stack platform <a href="https://d2global.in" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">d2global.in</a></li>
+                        <li>Scaled Initiators of Change NGO impact through MERN stack platform <a href="https://initiatorsofchange.com" target="_blank" rel="noopener noreferrer" className="text-gradient-blue font-medium hover:underline">initiatorsofchange.com</a></li>
                       </ul>
                     </div>
                   </div>
                   <div className="flex flex-col items-end justify-between">
-                    <span className="certification-date">Jan. 2024 - Present</span>
+                    <span className="certification-date">Jan. 2024 – Present</span>
                     <div className="text-sm text-muted-foreground mt-2 text-right">
                       Remote
                     </div>
