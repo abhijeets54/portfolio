@@ -739,6 +739,13 @@ export default function Home() {
                 
                 <div className="space-y-6">
                   <div>
+                    <h4 className="text-foreground font-medium mb-2">Phone</h4>
+                    <a href="tel:+916239521161" className="text-muted-foreground hover:text-accent transition-colors">
+                      +91 6239521161
+                    </a>
+                  </div>
+                  
+                  <div>
                     <h4 className="text-foreground font-medium mb-2">Follow Me</h4>
                     <div className="flex gap-4">
                       <SocialLinks />

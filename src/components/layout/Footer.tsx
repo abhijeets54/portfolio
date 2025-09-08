@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Github, Linkedin, Twitter, Instagram, Mail, Download } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Mail, Download, Phone } from 'lucide-react';
 import { ResumeButton } from '@/components/ui/resume-button';
 import { SocialLinks } from '@/components/ui/social-links';
 import CodeSlashIcon from '@/components/ui/code-slash-icon';
@@ -61,6 +61,12 @@ const Footer = () => {
             <div>
               <h4 className="font-serif text-lg mb-6">Get in Touch</h4>
               <ul className="space-y-3 text-sm">
+                <li>
+                  <a href="tel:+916239521161" className="text-muted-foreground hover:text-accent transition-colors flex items-center">
+                    <Phone className="h-4 w-4 mr-2" />
+                    +91 6239521161
+                  </a>
+                </li>
                 <li>
                   <a href="mailto:your-email@example.com" className="text-muted-foreground hover:text-accent transition-colors flex items-center">
                     <Mail className="h-4 w-4 mr-2" />
