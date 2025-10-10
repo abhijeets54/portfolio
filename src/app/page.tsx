@@ -298,7 +298,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex flex-col items-end justify-between">
-                    <span className="certification-date">Aug. 2025 – Present</span>
+                    <span className="certification-date">Aug. 2025 – Sep. 2025</span>
                     <div className="text-sm text-muted-foreground mt-2 text-right">
                       Mohali, Punjab
                     </div>
