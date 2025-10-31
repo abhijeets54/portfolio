@@ -11,6 +11,7 @@ import ProjectCard from '@/components/project/ProjectCard';
 import usePageLoading from '@/hooks/usePageLoading';
 import { ResumeButton } from '@/components/ui/resume-button';
 import ImageContainer from '@/components/ui/ImageContainer';
+import { BlogPreview } from '@/components/blog';
 
 // Animation variants
 const fadeIn = {
@@ -281,7 +282,7 @@ export default function Home() {
               Experience
             </h2>
           </FadeInWhenVisible>
-          
+
           <div className="max-w-4xl mx-auto space-y-8">
             <FadeInWhenVisible>
               <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
@@ -306,7 +307,7 @@ export default function Home() {
                 </div>
               </div>
             </FadeInWhenVisible>
-            
+
             <FadeInWhenVisible>
               <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
                 <div className="flex flex-col md:flex-row justify-between gap-4">
@@ -330,7 +331,7 @@ export default function Home() {
                 </div>
               </div>
             </FadeInWhenVisible>
-            
+
             <FadeInWhenVisible>
               <div className="certification-card bg-card p-6 rounded-sm border border-border hover:shadow-lg transition-shadow">
                 <div className="flex flex-col md:flex-row justify-between gap-4">
@@ -357,6 +358,83 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-24 bg-card relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-primary/5 to-accent/5 z-0"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <FadeInWhenVisible>
+            <h2 className="text-3xl font-serif font-bold mb-4 text-foreground text-center">
+              Featured Projects
+            </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-16">
+              A collection of projects that showcase my skills and experience in building modern web applications.
+            </p>
+          </FadeInWhenVisible>
+
+          <div className="relative">
+            <FadeInWhenVisible>
+              <motion.div
+                className="flex gap-8 project-slider"
+                initial={{ x: 0 }}
+                animate={{
+                  x: [0, -2000],
+                  transition: {
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 60,
+                      ease: "linear",
+                    }
+                  }
+                }}
+                whileHover={{
+                  animationPlayState: "paused"
+                }}
+              >
+                {/* Projects for infinite scroll */}
+                {[...projects, ...projects, ...projects].map((project, index) => (
+                  <motion.div
+                    key={`project-${index}-${project.id}`}
+                    className="min-w-[300px] md:min-w-[400px] lg:min-w-[500px] project-card-wrapper"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: '0 20px 30px rgba(0, 0, 0, 0.2)',
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    <ProjectCard
+                      id={project.id}
+                      title={project.title}
+                      description={project.description}
+                      image={project.image}
+                      tags={project.tags}
+                      liveUrl={project.liveUrl}
+                      featured={project.featured}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </FadeInWhenVisible>
+
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-card via-card/80 to-transparent w-[100px] h-full z-20 pointer-events-none"></div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-gradient-to-l from-card via-card/80 to-transparent w-[100px] h-full z-20 pointer-events-none"></div>
+          </div>
+
+          <FadeInWhenVisible className="mt-16 text-center">
+            <Link
+              href="/projects"
+              className="project-link inline-flex items-center gap-2 border border-primary text-primary px-8 py-3 text-sm tracking-wider uppercase font-medium hover:bg-primary/5 transition-colors"
+            >
+              View All Projects
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </FadeInWhenVisible>
+        </div>
+      </section>
+
+      {/* Blogs Section */}
+      <BlogPreview />
 
       {/* Skills Section */}
       <section id="skills" className="py-24 bg-background">
@@ -501,80 +579,6 @@ export default function Home() {
               </div>
             </FadeInWhenVisible>
           </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-24 bg-card relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-primary/5 to-accent/5 z-0"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <FadeInWhenVisible>
-            <h2 className="text-3xl font-serif font-bold mb-4 text-foreground text-center">
-              Featured Projects
-            </h2>
-            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-16">
-              A collection of projects that showcase my skills and experience in building modern web applications.
-            </p>
-          </FadeInWhenVisible>
-          
-          <div className="relative">
-            <FadeInWhenVisible>
-              <motion.div 
-                className="flex gap-8 project-slider"
-                initial={{ x: 0 }}
-                animate={{ 
-                  x: [0, -2000],
-                  transition: {
-                    x: {
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      duration: 60,
-                      ease: "linear",
-                    }
-                  }
-                }}
-                whileHover={{
-                  animationPlayState: "paused"
-                }}
-              >
-                {/* Projects for infinite scroll */}
-                {[...projects, ...projects, ...projects].map((project, index) => (
-                  <motion.div 
-                    key={`project-${index}-${project.id}`}
-                    className="min-w-[300px] md:min-w-[400px] lg:min-w-[500px] project-card-wrapper"
-                    whileHover={{ 
-                      scale: 1.05, 
-                      boxShadow: '0 20px 30px rgba(0, 0, 0, 0.2)',
-                      transition: { duration: 0.3 }
-                    }}
-                  >
-                    <ProjectCard
-                      id={project.id}
-                      title={project.title}
-                      description={project.description}
-                      image={project.image}
-                      tags={project.tags}
-                      liveUrl={project.liveUrl}
-                      featured={project.featured}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </FadeInWhenVisible>
-            
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-card via-card/80 to-transparent w-[100px] h-full z-20 pointer-events-none"></div>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-gradient-to-l from-card via-card/80 to-transparent w-[100px] h-full z-20 pointer-events-none"></div>
-          </div>
-          
-          <FadeInWhenVisible className="mt-16 text-center">
-            <Link 
-              href="/projects"
-              className="project-link inline-flex items-center gap-2 border border-primary text-primary px-8 py-3 text-sm tracking-wider uppercase font-medium hover:bg-primary/5 transition-colors"
-            >
-              View All Projects
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </FadeInWhenVisible>
         </div>
       </section>
 

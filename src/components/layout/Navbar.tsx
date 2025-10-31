@@ -62,15 +62,15 @@ const Navbar = () => {
   // Handle active section detection
   React.useEffect(() => {
     const handleSectionDetection = () => {
-      const sections = ['about', 'projects', 'skills', 'extracurricular', 'contact'];
+      const sections = ['about', 'projects', 'blogs', 'extracurricular', 'contact'];
       const scrollPosition = window.scrollY + 100; // Offset to trigger earlier
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const top = element.offsetTop;
           const height = element.offsetHeight;
-          
+
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(section);
             break;
@@ -78,7 +78,7 @@ const Navbar = () => {
         }
       }
     };
-    
+
     window.addEventListener('scroll', handleSectionDetection);
     return () => window.removeEventListener('scroll', handleSectionDetection);
   }, []);
@@ -101,36 +101,36 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-12 relative z-10">
-            <Link 
-              href="/#about" 
+            <Link
+              href="/#about"
               className={`nav-link text-foreground text-sm uppercase tracking-wider hover:text-accent transition-colors ${activeSection === 'about' ? 'active' : ''}`}
             >
               About
             </Link>
 
-            <Link 
-              href="/#projects" 
+            <Link
+              href="/#projects"
               className={`nav-link text-foreground text-sm uppercase tracking-wider hover:text-accent transition-colors ${activeSection === 'projects' ? 'active' : ''}`}
             >
               Projects
             </Link>
 
-            <Link 
-              href="/#skills" 
-              className={`nav-link text-foreground text-sm uppercase tracking-wider hover:text-accent transition-colors ${activeSection === 'skills' ? 'active' : ''}`}
+            <Link
+              href="/blog"
+              className={`nav-link text-foreground text-sm uppercase tracking-wider hover:text-accent transition-colors ${activeSection === 'blogs' ? 'active' : ''}`}
             >
-              Skills
+              Blogs
             </Link>
 
-            <Link 
-              href="/#extracurricular" 
+            <Link
+              href="/#extracurricular"
               className={`nav-link text-foreground text-sm uppercase tracking-wider hover:text-accent transition-colors ${activeSection === 'extracurricular' ? 'active' : ''}`}
             >
               Extracurricular
             </Link>
 
-            <Link 
-              href="/#contact" 
+            <Link
+              href="/#contact"
               className={`nav-link text-foreground text-sm uppercase tracking-wider hover:text-accent transition-colors ${activeSection === 'contact' ? 'active' : ''}`}
             >
               Contact
@@ -173,42 +173,42 @@ const Navbar = () => {
                   
                   <div className="p-6 flex-1 overflow-auto">
                     <div className="flex flex-col space-y-6">
-                      <Link 
-                        href="/#about" 
-                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors" 
+                      <Link
+                        href="/#about"
+                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors"
                         onClick={() => closeMobileMenu()}
                       >
                         About
                       </Link>
-                      <Link 
-                        href="/#projects" 
-                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors" 
+                      <Link
+                        href="/#projects"
+                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors"
                         onClick={() => closeMobileMenu()}
                       >
                         Projects
                       </Link>
-                      <Link 
-                        href="/#skills" 
-                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors" 
+                      <Link
+                        href="/blog"
+                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors"
                         onClick={() => closeMobileMenu()}
                       >
-                        Skills
+                        Blogs
                       </Link>
-                      <Link 
-                        href="/#extracurricular" 
-                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors" 
+                      <Link
+                        href="/#extracurricular"
+                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors"
                         onClick={() => closeMobileMenu()}
                       >
                         Extracurricular
                       </Link>
-                      <Link 
-                        href="/#contact" 
-                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors" 
+                      <Link
+                        href="/#contact"
+                        className="mobile-nav-link text-foreground text-base hover:text-accent transition-colors"
                         onClick={() => closeMobileMenu()}
                       >
                         Contact
                       </Link>
-                      
+
                       {/* Resume Download Button */}
                       <div className="mt-4">
                         <ResumeButton href="/Abhijeet's Resume.pdf" text="Download Resume" />
