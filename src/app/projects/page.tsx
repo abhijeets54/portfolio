@@ -55,6 +55,16 @@ const FadeInWhenVisible = ({ children, className }: { children: React.ReactNode,
 // Extended projects data (includes all projects from home page plus more)
 const allProjects = [
   {
+    id: 'insightflow',
+    title: 'InsightFlow – AI-Powered Data Analysis Platform',
+    description: 'An enterprise-grade AI-powered data analytics platform that enables non-technical users to analyze datasets through natural language queries, automated visualizations, and intelligent insights. Built with Next.js 16, Google Gemini AI, and LIDA-inspired architecture (Microsoft Research), the platform features 8+ interactive chart types with AI-powered chart recommendations, forecasting, anomaly detection, and Redis caching for optimal performance. Features include drag-and-drop file upload supporting CSV, Excel, JSON, and TSV formats, natural language query processing using Google Gemini API with RAG architecture, AI-powered chart recommendations suggesting optimal visualizations for data, 8+ interactive chart types (line, bar, scatter, heatmap, sankey, funnel) with Recharts and Nivo, real-time trend forecasting and anomaly detection with alerts, LIDA-inspired architecture for intelligent data summarization, multi-API key load balancing with circuit breaker pattern supporting 1000+ daily requests, Redis caching (Upstash) for 10x faster dataset loading, Supabase PostgreSQL with Row-Level Security for multi-user support, and dashboard sharing with export functionality (PNG/PDF/CSV/Excel).',
+    image: '/insight.png',
+    tags: ['Next.js 16', 'Google Gemini AI', 'Supabase', 'Redis', 'Upstash', 'LIDA Architecture', 'RAG', 'TypeScript', 'Recharts', 'Nivo', 'Data Analytics', 'BI Platform'],
+    liveUrl: 'https://insight-flow-sandy.vercel.app/',
+    featured: true,
+    category: 'AI / Data Analytics',
+  },
+  {
     id: 'ootd',
     title: 'OOTD – AI-Powered Fashion Stylist',
     description: 'A comprehensive AI-powered fashion platform that analyzes outfits, generates style recommendations, and creates personalized fashion advice using Google Gemini AI. Features include advanced outfit image analysis with style scoring, AI image generation with multiple service fallbacks, secure user authentication with Clerk, professional image management via Cloudinary, interactive questionnaires with dynamic AI-generated questions, PDF export capabilities, and responsive design with dark/light mode support.',

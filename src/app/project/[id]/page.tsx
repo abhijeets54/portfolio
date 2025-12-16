@@ -12,6 +12,86 @@ import Breadcrumb from '@/components/ui/breadcrumb';
 // Extended project data with additional details
 const projectsData = [
   {
+    id: 'insightflow',
+    title: 'InsightFlow – AI-Powered Data Analysis Platform',
+    description: 'An enterprise-grade AI-powered data analytics platform that enables non-technical users to analyze datasets through natural language queries, automated visualizations, and intelligent insights.',
+    fullDescription: `
+      InsightFlow is a production-ready, enterprise-grade data analytics platform that democratizes data analysis by enabling non-technical users to explore datasets through natural language queries and automated AI-powered visualizations. Built with cutting-edge technologies including Next.js 16, Google Gemini AI, and a LIDA-inspired architecture based on Microsoft Research.
+
+      The platform addresses a critical challenge in business intelligence: making data analysis accessible to everyone without requiring SQL knowledge or technical expertise. Users can simply upload their data files and ask questions in plain English like "What are my top 5 products by revenue?" or "Show me sales trends over time."
+
+      The technical implementation features a sophisticated AI query engine that processes natural language questions using Google Gemini 2.0 Flash and 2.5 Flash models with RAG (Retrieval-Augmented Generation) architecture. The system intelligently analyzes dataset structure, generates appropriate SQL queries or aggregations, and returns results with confidence scoring.
+
+      The LIDA-inspired architecture (based on Microsoft Research's "LIDA: A Tool for Automatic Generation of Grammar-Agnostic Visualizations and Infographics") includes three core components: Data Summarization that generates concise 2K token summaries of datasets for efficient AI processing, Goal Exploration that suggests relevant visualization goals and questions based on data characteristics, and Visualization Generation that creates optimal chart configurations with self-evaluation scoring.
+
+      Advanced features include AI-powered chart recommendations that analyze data types and suggest the best visualization (bar, line, pie, scatter, heatmap, sankey, funnel), real-time trend forecasting using time series analysis, automated anomaly detection with severity-based alerts, correlation analysis with interactive heatmaps, and AI-generated narrative insights that explain chart patterns in natural language.
+
+      The platform implements a production-grade multi-API key management system with circuit breaker pattern, weighted round-robin distribution across 10 Gemini API keys, health monitoring with auto-recovery, and support for 1000+ daily API requests on the free tier. Redis caching via Upstash provides 10x faster dataset loading (50ms vs 500ms), reducing Supabase read operations by 80% and Gemini API calls by 90% through cached insights.
+
+      The data processing pipeline handles files up to 50MB with intelligent column type detection (numbers, dates, text, categories), automatic data quality analysis with scoring, duplicate and outlier identification using IQR method, and support for datasets with 10,000+ rows.
+
+      Built with a modern tech stack including Next.js 16 App Router with React Server Components, Zustand state management with localStorage persistence, Supabase for authentication and PostgreSQL database with Row-Level Security, and Recharts/Nivo/D3.js for advanced interactive visualizations. The responsive design with Tailwind CSS 4 ensures excellent user experience across desktop, tablet, and mobile devices.
+
+      This project demonstrates advanced full-stack development skills with production-ready architecture, sophisticated AI integration with multiple models and fallback systems, enterprise patterns like circuit breakers and load balancing, comprehensive caching strategies for performance optimization, security best practices with RLS and proper authentication, and scalable design supporting 250-1000 active users per day.
+    `,
+    image: '/insight.png',
+    tags: ['Next.js 16', 'Google Gemini AI', 'Supabase', 'Redis', 'Upstash', 'LIDA Architecture', 'RAG', 'TypeScript', 'Recharts', 'Nivo', 'Data Analytics', 'BI Platform', 'Natural Language Processing'],
+    liveUrl: 'https://insight-flow-sandy.vercel.app/',
+    featured: true,
+    category: 'AI / Data Analytics',
+    goals: [
+      'Create an enterprise-grade data analytics platform accessible to non-technical users',
+      'Implement natural language query processing using Google Gemini API with RAG architecture',
+      'Build LIDA-inspired architecture for intelligent data summarization and visualization generation',
+      'Develop AI-powered chart recommendations, forecasting, and anomaly detection',
+      'Implement production-grade multi-API key management with circuit breaker pattern',
+      'Create Redis caching system for 10x performance improvement and reduced API costs',
+      'Design 8+ interactive visualization types with comprehensive export functionality',
+      'Ensure scalability to support 1000+ daily requests and 250-1000 active users'
+    ],
+    technologies: {
+      frontend: ['Next.js 16 (App Router)', 'React 19', 'TypeScript 5', 'Tailwind CSS 4', 'Recharts 3.5', 'Nivo Charts', 'D3.js', 'Framer Motion'],
+      backend: ['Next.js API Routes', 'Supabase (PostgreSQL + Auth + Storage)', 'Redis (Upstash)', 'RESTful APIs'],
+      ai: ['Google Gemini 2.0 Flash', 'Gemini 2.5 Flash', 'RAG Architecture', 'LIDA-Inspired Architecture', 'Multi-Model Fallbacks'],
+      stateManagement: ['Zustand 5.0.8 with localStorage persistence'],
+      dataProcessing: ['PapaParse (CSV)', 'XLSX (Excel)', 'React Dropzone', 'Axios'],
+      visualization: ['Recharts', 'Nivo (bar, line, pie, heatmap, sankey, funnel)', 'D3.js ecosystem'],
+      authentication: ['Supabase Auth with Row-Level Security (RLS)'],
+      caching: ['Redis (Upstash serverless)', 'Multi-key load balancing'],
+      export: ['html2canvas', 'jsPDF', 'CSV/Excel export'],
+      deployment: ['Vercel (Frontend)', 'Supabase Cloud (Database)', 'Upstash (Redis)'],
+      other: ['Circuit Breaker Pattern', 'Weighted Round-Robin Distribution', 'Health Monitoring', 'Statistical Analysis'],
+    },
+    challenges: [
+      'Implementing LIDA-inspired architecture (Microsoft Research) for intelligent data summarization and reducing token usage by 50%',
+      'Building multi-API key load balancing system with circuit breaker pattern, health monitoring, and weighted round-robin distribution across 10 keys',
+      'Creating natural language query engine that converts English questions to SQL/aggregations with 90%+ accuracy and confidence scoring',
+      'Integrating Redis caching (Upstash) for serverless environment with automatic fallback to Supabase for 10x performance gain',
+      'Developing AI-powered chart recommendation system that analyzes data types and suggests optimal visualizations',
+      'Implementing real-time anomaly detection using IQR method with severity-based alerts and visual indicators',
+      'Designing Row-Level Security (RLS) policies in Supabase to ensure users can only access their own data',
+      'Handling large datasets (10,000+ rows) with intelligent sampling and pagination without performance degradation',
+      'Creating comprehensive export system supporting PNG, PDF, CSV, and Excel formats with proper formatting',
+      'Building responsive UI with 8+ complex chart types that work seamlessly across desktop, tablet, and mobile'
+    ],
+    results: [
+      'Production-ready SaaS platform supporting 250-1000 active users per day with 1000+ API requests on free tier',
+      'Natural language query engine with 90%+ accuracy for common business intelligence questions',
+      'LIDA-inspired architecture reducing AI token usage by 50% while maintaining high-quality outputs',
+      'Multi-API key system with circuit breaker pattern achieving 99.9% uptime and automatic failure recovery',
+      'Redis caching providing 10x faster dataset loading (50ms vs 500ms) and 80% reduction in database reads',
+      '8+ interactive visualization types (line, bar, scatter, pie, heatmap, sankey, funnel, area) with AI recommendations',
+      'Real-time anomaly detection and forecasting with automated alerts and narrative generation',
+      'Comprehensive data quality analysis with automatic outlier detection, duplicate identification, and scoring',
+      'Dashboard sharing and collaboration features with public links and team member management',
+      'Full export functionality supporting PNG, PDF, CSV, and Excel with professional formatting',
+      'Complete deployment on free tier: Vercel (hosting), Supabase (database), Upstash (Redis), Gemini (AI)',
+      'Scalable architecture designed to handle 10,000 requests/day with free tier resources'
+    ],
+    date: 'December 2025',
+    duration: '2 months',
+  },
+  {
     id: 'initiators-of-change',
     title: 'Initiators of Change – NGO Website',
     description: 'A full-stack web application developed for an NGO to manage operations, track events, and process donations.',

@@ -60,6 +60,16 @@ const FadeInWhenVisible = ({ children, className }: { children: React.ReactNode,
 // Projects data
 const projects = [
   {
+    id: 'insightflow',
+    title: 'InsightFlow – AI-Powered Data Analysis Platform',
+    description: 'An enterprise-grade AI-powered data analytics platform that enables non-technical users to analyze datasets through natural language queries, automated visualizations, and intelligent insights. Built with Next.js 16, Google Gemini AI, and LIDA-inspired architecture.',
+    image: '/insight.png',
+    tags: ['Next.js 16', 'Google Gemini AI', 'Supabase', 'Redis', 'Upstash', 'LIDA Architecture', 'RAG', 'TypeScript', 'Recharts', 'Nivo'],
+    liveUrl: 'https://insight-flow-sandy.vercel.app/',
+    featured: true,
+    category: 'AI / Data Analytics',
+  },
+  {
     id: 'ootd',
     title: 'OOTD – AI-Powered Fashion Stylist',
     description: 'A comprehensive AI-powered fashion platform that analyzes outfits, generates style recommendations, and creates personalized fashion advice using Google Gemini AI, with advanced image analysis, AI outfit generation, and professional PDF reports.',
